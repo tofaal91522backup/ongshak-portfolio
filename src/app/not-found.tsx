@@ -1,4 +1,4 @@
-import { buttonVariants } from "@/favicon.ico/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 

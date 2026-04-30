@@ -1,10 +1,10 @@
-import AnimatedMenu from "@/features/marketting/_pages/home/ui/AnimatedMenu";
+import AnimatedMenu from "@/components/layout/AnimatedMenu";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* <AnimatedMenu> */}
-        {children}
+      {children}
 
       {/* </AnimatedMenu> */}
     </>

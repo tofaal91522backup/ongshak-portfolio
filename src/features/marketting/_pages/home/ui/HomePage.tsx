@@ -1,25 +1,22 @@
-import HoldMusicController from "@/components/HoldMusicController";
 import AISpotlight from "./AISpotlight";
+import AnimatedHero from "./AnimatedHero";
 import CredibilityStrip from "./CredibilityStrip";
 import CTAFooter from "./CTAFooter";
 import FeaturedWork from "./FeaturedWork";
-import GTA6Hero from "./GTA6Hero";
 import TrustBar from "./TrustBar";
 import WhatWeDo from "./WhatWeDo";
-import AnimatedMenu from "./AnimatedMenu";
 
 const HomePage = () => {
   return (
-    <AnimatedMenu>
-      <GTA6Hero />
-      <HoldMusicController />
-      {/* <CredibilityStrip />
+    <div>
+      <AnimatedHero />
+      <CredibilityStrip />
       <WhatWeDo />
       <FeaturedWork />
       <AISpotlight />
       <TrustBar />
-      <CTAFooter /> */}
-    </AnimatedMenu>
+      <CTAFooter />
+    </div>
   );
 };
 

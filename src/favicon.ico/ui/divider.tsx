@@ -1,1 +1,0 @@
-export const Divider = () => <div className="border-b" role="separator" />;
