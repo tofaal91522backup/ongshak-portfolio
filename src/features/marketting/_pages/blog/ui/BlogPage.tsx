@@ -1,4 +1,4 @@
-import TrainAtHomeForm from "./TrainAtHomeForm";
+// import TrainAtHomeForm from "./TrainAtHomeForm";
 
 const BlogPage = () => {
   return (
@@ -10,7 +10,7 @@ const BlogPage = () => {
         updates and expert advice to help you achieve your fitness goals.
       </p>
 
-      <TrainAtHomeForm />
+      {/* <TrainAtHomeForm />/ */}
     </div>
   );
 };

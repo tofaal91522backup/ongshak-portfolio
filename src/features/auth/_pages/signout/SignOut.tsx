@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
+import { Button } from "@/favicon.ico/ui/button";
+import { Spinner } from "@/favicon.ico/ui/spinner";
 import { destroySession } from "@/lib/session";
 import { useQueryClient } from "@tanstack/react-query";
 import { LogOut } from "lucide-react";

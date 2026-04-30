@@ -1,13 +1,13 @@
 "use client";
 
-import SafeImage from "@/components/shared/AppImage";
+import SafeImage from "@/favicon.ico/shared/AppImage";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@/favicon.ico/ui/popover";
 
-import AsyncStateWrapper from "@/components/shared/AsyncStateWrapper";
+import AsyncStateWrapper from "@/favicon.ico/shared/AsyncStateWrapper";
 import { useFetchData } from "@/hooks/useFetchData";
 import { cn } from "@/lib/utils";
 import UserMenuPopover from "./UserMenuPopover";

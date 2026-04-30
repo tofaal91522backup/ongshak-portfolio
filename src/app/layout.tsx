@@ -2,6 +2,9 @@ import AppProviders from "@/providers/app-providers";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import SplashCursor from "@/components/SplashCursor";
+import ClickMusicController from "@/components/ClickMusicController";
+import HoldMusicController from "@/components/HoldMusicController";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,9 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "This is the title of the page",
+  title: "Ongshak",
   description:
-    "This is the description of the page. It should be concise and informative, providing a clear overview of the content and purpose of the page.",
+    "Ongshak is a digital architecture and design studio that creates innovative and immersive experiences for brands and audiences. We specialize in creating digital spaces that are both functional and beautiful, using cutting-edge technology and design principles to bring our clients' visions to life.",
 };
 
 export default function RootLayout({
@@ -29,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AppProviders>{children}</AppProviders>
+        {children}
       </body>
     </html>
   );

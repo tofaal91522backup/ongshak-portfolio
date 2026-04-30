@@ -1,26 +1,26 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/favicon.ico/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { FieldGroup } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+} from "@/favicon.ico/ui/card";
+import { FieldGroup } from "@/favicon.ico/ui/field";
+import { Input } from "@/favicon.ico/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/favicon.ico/ui/select";
 
-import { FormFieldWrapper } from "@/components/shared/form-related/FormFieldWrapper";
-import { SubmitButton } from "@/components/shared/form-related/SubmitButton";
-import { SubmitErrorSummary } from "@/components/shared/form-related/SubmitErrorSummary";
+import { FormFieldWrapper } from "@/favicon.ico/shared/form-related/FormFieldWrapper";
+import { SubmitButton } from "@/favicon.ico/shared/form-related/SubmitButton";
+import { SubmitErrorSummary } from "@/favicon.ico/shared/form-related/SubmitErrorSummary";
 import { useZodTanstackForm } from "@/hooks/useZodTanstackForm";
 import { TrainerAtHomeSchema } from "../_schemas/trainAtHome.schema";
 import { useTrainerAtHomeMutation } from "../_services/trainAtHome.service";

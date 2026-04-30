@@ -15,7 +15,10 @@ export default function AppProviders({
       enableSystem
       disableTransitionOnChange
     >
-      <QueryProvider>{children}</QueryProvider>
+      <QueryProvider>
+        {children}
+        
+      </QueryProvider>
       <Toaster position="bottom-right" />
     </ThemeProvider>
   );

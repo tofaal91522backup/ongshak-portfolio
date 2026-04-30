@@ -1,7 +1,7 @@
 "use client";
 
-import { Divider } from "@/components/ui/divider";
-import { Row } from "@/components/ui/row";
+import { Divider } from "@/favicon.ico/ui/divider";
+import { Row } from "@/favicon.ico/ui/row";
 import { Settings } from "lucide-react";
 import SignOut from "../_pages/signout/SignOut";
 import UserInfo from "./UserInfo";

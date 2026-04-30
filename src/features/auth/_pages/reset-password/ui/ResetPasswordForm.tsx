@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/favicon.ico/ui/button";
+import { Input } from "@/favicon.ico/ui/input";
 
 import { ResetPasswordAction } from "@/features/auth/_pages/reset-password/services/reset-password.action";
 import { Loader } from "lucide-react";

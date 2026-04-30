@@ -1,14 +1,12 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Spinner } from "@/components/ui/spinner";
+import { Button } from "@/favicon.ico/ui/button";
+import { Input } from "@/favicon.ico/ui/input";
+import { Spinner } from "@/favicon.ico/ui/spinner";
 import { useRouter } from "next/navigation";
 import { useActionState, useEffect } from "react";
 import { toast } from "sonner";
 import { SignInAction } from "../services/signIn.action";
-
-
 
 export default function SignInForm() {
   const router = useRouter();

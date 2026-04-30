@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
+import { Button } from "@/favicon.ico/ui/button";
+import { Spinner } from "@/favicon.ico/ui/spinner";
 import { Trash2Icon } from "lucide-react";
 
 import {
@@ -14,7 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from "@/favicon.ico/ui/alert-dialog";
 import { request } from "@/lib/http/request";
 import { useMutationHandler } from "./useMutationHandler";
 

@@ -1,18 +1,12 @@
-import Footer from "@/components/layout/Footer/Footer";
-import Navbar from "@/components/layout/Navbar/Navbar";
+import AnimatedMenu from "@/features/marketting/_pages/home/ui/AnimatedMenu";
 
-export default function MarkettingLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <section>
-      <Navbar />
-      <section className="min-h-screen container mx-auto bg-accent">
+    <>
+      {/* <AnimatedMenu> */}
         {children}
-      </section>
-      <Footer />
-    </section>
+
+      {/* </AnimatedMenu> */}
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import SafeImage from "@/components/shared/AppImage";
+import SafeImage from "@/favicon.ico/shared/AppImage";
 
 const UserInfo = ({
   className,

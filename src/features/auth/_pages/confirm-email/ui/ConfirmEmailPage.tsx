@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import unAuthorizedApiClient from "@/lib/http/publicApiClient";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/favicon.ico/ui/button";
 import { CheckCircle2, XCircle, Loader2 } from "lucide-react";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -29,13 +29,13 @@ export default function ConfirmEmailPage({ token }: { token: string }) {
       try {
         const res = await unAuthorizedApiClient.post(
           "/rest-auth/registration/account-confirm-email/",
-          { key: decodedToken }
+          { key: decodedToken },
         );
 
         setStatus("success");
         setMessage(
           res?.data?.detail ||
-            "Your email has been successfully confirmed! You can now sign in."
+            "Your email has been successfully confirmed! You can now sign in.",
         );
       } catch (err: any) {
         setStatus("error");
