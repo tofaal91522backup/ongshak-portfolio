@@ -4,7 +4,7 @@ import { featuredProjects } from "../data/site";
 
 export default function FeaturedWork() {
   return (
-    <section className="bg-slate-50 py-24">
+    <section className=" py-24">
       <div className="mx-auto  container px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">

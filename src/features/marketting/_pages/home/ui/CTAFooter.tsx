@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function CTAFooter() {
   return (
-    <section className="bg-white py-24">
+    <section className="py-24">
       <div className="mx-auto  container px-4 sm:px-6 lg:px-8">
         <div className="rounded-[2.5rem] bg-gradient-to-br from-[#007aff] to-[#005bd1] p-8 text-center text-white sm:p-12 lg:p-16">
           <h2 className="text-4xl font-black tracking-tight sm:text-5xl">

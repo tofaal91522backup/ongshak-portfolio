@@ -3,7 +3,7 @@ import { ArrowRight, BrainCircuit } from "lucide-react";
 
 export default function AISpotlight() {
   return (
-    <section className="bg-white py-24">
+    <section className=" py-24">
       <div className="mx-auto  container px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-[2.5rem] bg-slate-950 p-8 text-white sm:p-12 lg:p-16">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">

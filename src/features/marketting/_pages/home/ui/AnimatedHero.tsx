@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function AnimatedHero() {
   const logoGradientStart =
-    "radial-gradient(circle at 50% 200vh, rgba(255, 166, 5, 0) 0, rgba(255, 166, 5, 0.55) 65vh, rgba(19, 93, 201, 0.65) 100vh, rgba(50, 194, 216, 0.55) 125vh, rgba(14, 146, 185, 0) 150vh)";
+    "radial-gradient(circle at 50% 200vh, rgba(255, 166, 5, 0) 0, rgba(255, 166, 5, 0.55) 65vh, rgba(19, 93, 201, 0.65) 100vh, #32c2d88c 125vh, rgba(14, 146, 185, 0) 150vh)";
 
   const logoGradientEnd =
     "radial-gradient(circle at 50% 3.9575vh, rgb(255, 166, 5) 0vh, rgb(253, 125, 24) 35vh, rgb(19, 93, 201) 75vh, rgb(50, 194, 216) 115vh, rgba(14, 146, 185, 0) 140.599vh)";
@@ -256,7 +256,7 @@ export default function AnimatedHero() {
             <button
               className="rounded-full w-full md:w-fit border px-6 py-3 font-semibold backdrop-blur-md transition hover:scale-[1.02]"
               style={{
-                borderColor: "rgba(50, 194, 216, 0.55)",
+                borderColor: "#32c2d88c",
                 background: "rgba(19, 93, 201, 0.12)",
                 WebkitTextFillColor: "#32C2D8",
               }}
@@ -268,7 +268,7 @@ export default function AnimatedHero() {
           <div
             className="flex flex-wrap items-center gap-x-4 gap-y-2 md:justify-start justify-center font-bold"
             style={{
-              WebkitTextFillColor: "rgba(50, 194, 216, 0.55)",
+              WebkitTextFillColor: "#32c2d88c",
             }}
           >
             <span>347+ Projects</span>

@@ -2,7 +2,7 @@ import { industries } from "../data/site";
 
 export default function TrustBar() {
   return (
-    <section className="border-y border-slate-200 bg-slate-50 py-12">
+    <section className="border-y  py-12">
       <div className="mx-auto  container px-4 text-center sm:px-6 lg:px-8">
         <p className="text-sm font-black uppercase tracking-[0.25em] text-slate-500">
           Trusted across industries
