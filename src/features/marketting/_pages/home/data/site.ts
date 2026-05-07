@@ -33,6 +33,7 @@ export const services = [
 
 export const featuredProjects = [
   {
+    img: "/images/feature-work/qc.jpg",
     title: "threadBridge SteelGuard",
     industry: "Manufacturing",
     description:
@@ -40,6 +41,7 @@ export const featuredProjects = [
     metric: "5,200+ defective pipes caught",
   },
   {
+    img: "/images/feature-work/cane.jpg",
     title: "Drishti Smart Cane",
     industry: "Assistive Technology",
     description:
@@ -47,6 +49,7 @@ export const featuredProjects = [
     metric: "717+ active users",
   },
   {
+    img: "/images/feature-work/queue.jpg",
     title: "QueueSmart",
     industry: "SaaS / Fintech",
     description:

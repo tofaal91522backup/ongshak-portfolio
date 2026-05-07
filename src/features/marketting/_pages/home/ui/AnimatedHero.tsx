@@ -207,11 +207,6 @@ export default function AnimatedHero() {
               Since
               <br />
               2021
-              {/* 347+
-              <br />
-              Products
-              <br />
-              Built */}
             </h3>
           </div>
         </div>
@@ -295,3 +290,4 @@ export default function AnimatedHero() {
     </div>
   );
 }
+// {/* <div className="hero-main-logo mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs font-medium uppercase tracking-[0.3em] text-white/80 backdrop-blur-md"> <span className="h-1.5 w-1.5 rounded-full bg-[#FFA605] shadow-[0_0_12px_#FFA605]" /> Ongshak </div> {/* Brand reveal text */} <h1 className="hero-text bg-clip-text font-serif text-6xl leading-[0.95] tracking-tight text-transparent sm:text-7xl md:text-8xl lg:text-[10rem]" style={{ backgroundImage: logoGradientStart }} > <span className="block">Ongshak</span> <span className="mt-2 block text-2xl font-sans font-light tracking-[0.4em] text-white/70 sm:text-3xl md:text-4xl"> SINCE 2021 </span> </h1> </div> */}

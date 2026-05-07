@@ -192,15 +192,17 @@ const ShaderMaterial = ({
   uniforms: Uniforms;
 }) => {
   const { size } = useThree();
-  const ref = useRef<THREE.Mesh>();
+  const ref = useRef<THREE.Mesh | null>(null);
   let lastFrameTime = 0;
 
+  // eslint-disable-next-line react-hooks/immutability
   useFrame(({ clock }) => {
     if (!ref.current) return;
     const timestamp = clock.getElapsedTime();
     if (timestamp - lastFrameTime < 1 / maxFps) {
       return;
     }
+    // eslint-disable-next-line react-hooks/immutability
     lastFrameTime = timestamp;
 
     const material: any = ref.current.material;

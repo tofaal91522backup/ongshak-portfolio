@@ -1,7 +1,7 @@
-import AISpotlight from "./AISpotlight";
+"use client";
 import AnimatedHero from "./AnimatedHero";
-import CTAFooter from "./CTAFooter";
 import FeaturedWork from "./FeaturedWork";
+import Testimonials from "./Testimonials";
 import TrustBar from "./TrustBar";
 import WhatWeDo from "./WhatWeDo";
 
@@ -15,10 +15,9 @@ const HomePage = () => {
     >
       <AnimatedHero />
       <WhatWeDo />
+      <Testimonials/>
       <FeaturedWork />
-      <AISpotlight />
       <TrustBar />
-      <CTAFooter />
     </div>
   );
 };
