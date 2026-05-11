@@ -238,10 +238,10 @@ export default function AnimatedHero() {
             products with the technologies modern businesses need.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex  items-center gap-3">
             <Link href="/services#stack">
               <button
-                className="rounded-full w-full md:w-fit px-6 py-3 font-semibold shadow-lg transition hover:scale-[1.02]"
+                className="rounded-full md:px-6 px-3 md:py-3 py-2.5 font-semibold shadow-lg transition hover:scale-[1.02]"
                 style={{
                   background:
                     "linear-gradient(135deg, #FFA605 0%, #FD7D18 100%)",
@@ -253,7 +253,7 @@ export default function AnimatedHero() {
             </Link>
             <Link href="/contact">
               <button
-                className="rounded-full w-full md:w-fit border px-6 py-3 font-semibold backdrop-blur-md transition hover:scale-[1.02]"
+                className="rounded-full border md:px-6 px-3 md:py-3 py-2.5 font-semibold backdrop-blur-md transition hover:scale-[1.02]"
                 style={{
                   borderColor: "#32c2d88c",
                   background: "rgba(19, 93, 201, 0.12)",

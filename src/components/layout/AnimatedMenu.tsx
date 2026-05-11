@@ -530,7 +530,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
         className="fixed inset-0 z-40 h-[100svh] w-screen overflow-hidden bg-white"
         // FIX 5: promote overlay to its own GPU compositor layer so clip-path
         //         animation doesn't repaint the whole page
-        style={{ willChange: "clip-path" }}
+        style={{ willChange: "clip-path", clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" }}
       >
         <div
           ref={bgMainRef}
@@ -570,6 +570,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
                     src={src}
                     alt="Preview"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                     // FIX 1: eagerly preload every nav image so they're ready on first hover
                     priority={i === 0}
