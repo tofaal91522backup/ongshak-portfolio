@@ -28,7 +28,7 @@ const values = [
   {
     Icon: Hammer,
     title: "Craft Over Shortcuts",
-    body: "We don't cut corners. Every line of code, every design decision, every deployment — done right.",
+    body: "We don't cut corners. Every line of code, every design decision, every deployment  done right.",
   },
   {
     Icon: Target,
@@ -111,7 +111,7 @@ export default function AboutPage() {
                   )),
                 )}
 
-                {/* ── Large arc — top right ── */}
+                {/* ── Large arc  top right ── */}
                 <path
                   className="sk-line sk-pulse"
                   d="M 900 -60 Q 1150 200 1050 480"
@@ -127,7 +127,7 @@ export default function AboutPage() {
                   style={{ animationDelay: "0.4s", animationDuration: "3.2s" }}
                 />
 
-                {/* ── Circuit traces — horizontal ── */}
+                {/* ── Circuit traces  horizontal ── */}
                 <path
                   className="sk-line"
                   d="M 580 180 L 720 180 L 740 200 L 860 200"
@@ -143,7 +143,7 @@ export default function AboutPage() {
                   style={{ animationDelay: "1s" }}
                 />
 
-                {/* ── Circuit traces — vertical branch ── */}
+                {/* ── Circuit traces  vertical branch ── */}
                 <path
                   className="sk-line"
                   d="M 740 200 L 740 320 L 760 340 L 760 420"
@@ -175,7 +175,7 @@ export default function AboutPage() {
                   style={{ animationDelay: "0.9s" }}
                 />
 
-                {/* ── Hexagon outline — floating ── */}
+                {/* ── Hexagon outline  floating ── */}
                 <g
                   className="sk-float"
                   style={{
@@ -199,7 +199,7 @@ export default function AboutPage() {
                   />
                 </g>
 
-                {/* ── Small hex — bottom right ── */}
+                {/* ── Small hex  bottom right ── */}
                 <g
                   className="sk-float"
                   style={{
@@ -354,7 +354,7 @@ export default function AboutPage() {
             </p>
             <p>
               We began as a small team of engineers and designers who were tired
-              of seeing projects fail — not because of bad ideas, but because of
+              of seeing projects fail not because of bad ideas, but because of
               poor execution. So we built a company around doing things right.
             </p>
             <p>
@@ -369,8 +369,8 @@ export default function AboutPage() {
               launchpad for three technology ventures —{" "}
               <span className="text-white">threadBridge</span>,{" "}
               <span className="text-white">Drishti Technologies</span>, and{" "}
-              <span className="text-white">Khar Active</span> — each solving
-              real problems with technology.
+              <span className="text-white">Khar Active</span> each solving real
+              problems with technology.
             </p>
             <p className="text-white">
               We build things that matter. That&apos;s the job.

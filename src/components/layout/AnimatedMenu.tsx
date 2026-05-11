@@ -82,7 +82,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
 
   // FIX 3: animatePreviewChange crossfades stacked images instead of remounting.
   //         All images are already in the DOM (opacity 0 initially), so there is
-  //         zero network work on hover — only a compositor-layer opacity tween.
+  //         zero network work on hover  only a compositor-layer opacity tween.
   const animatePreviewChange = (img: NavImage) => {
     if (currentPreviewRef.current === img) return;
 
@@ -102,7 +102,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
   };
 
   const resetMenuVisuals = () => {
-    // Reset stacked preview images — only the initial one is visible
+    // Reset stacked preview images  only the initial one is visible
     ALL_IMAGES.forEach((src) => {
       const el = previewImgRefs.current[src];
       if (el) {
@@ -213,6 +213,8 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
     killCurrentTimeline();
     setAnimating(true);
 
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
     const tl = gsap.timeline({
       defaults: { ease: "power4.inOut" },
       onComplete: () => {
@@ -234,10 +236,10 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
       .to(
         containerRef.current,
         {
-          rotation: 8,
-          x: 280,
-          y: 420,
-          scale: 1.35,
+          rotation: isMobile ? 0 : 8,
+          x: isMobile ? 0 : 280,
+          y: isMobile ? 0 : 420,
+          scale: isMobile ? 1 : 1.35,
           duration: 1.15,
         },
         0,
@@ -554,7 +556,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
           ref={contentRef}
           className="relative flex h-full w-full origin-bottom-left items-center justify-center opacity-25"
         >
-          <div className="flex w-full gap-10 px-6 py-20 md:p-10">
+          <div className="flex w-full gap-10 px-6 py-6 md:p-10">
             <div className="hidden flex-[3] items-center justify-center md:flex">
               {/* FIX 2: All preview images are stacked here; we GSAP-fade between them.
                          No `key` prop → no remount → no network re-fetch on hover. */}
@@ -585,8 +587,8 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
               </div>
             </div>
 
-            <div className="flex flex-[2] flex-col justify-center gap-10 py-10">
-              <div className="flex flex-col gap-1 overflow-hidden">
+            <div className="flex flex-[2] flex-col justify-center gap-4 py-4 md:gap-10 md:py-10">
+              <div className="flex flex-col gap-0.5 overflow-hidden">
                 {links.map((item, index) => (
                   <Link
                     key={item.href}
@@ -599,7 +601,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
                     <span className="menu-link-number min-w-8 text-sm font-semibold text-white opacity-45">
                       0{index + 1}
                     </span>
-                    <span className="menu-link-text text-[3rem] font-light leading-none tracking-[-0.04em] text-white md:text-[4rem]">
+                    <span className="menu-link-text text-[2.4rem] font-light leading-none tracking-[-0.04em] text-white md:text-[4rem]">
                       {item.label}
                     </span>
                     <span className="menu-link-arrow text-3xl font-light text-[#007aff] opacity-0">

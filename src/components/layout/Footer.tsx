@@ -131,7 +131,7 @@ export default function Footer() {
                   <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-[#135DC9]">
                     <MapPin className="h-4 w-4" />
                   </span>
-                  <span className="leading-6">113 Love Rd</span>
+                  <span className="leading-6">113/A, Love Road, Tejgaon Industrial Area, Dhaka-1208</span>
                 </a>
               </li>
             </ul>

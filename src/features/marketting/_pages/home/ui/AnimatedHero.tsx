@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import MainHero from "./MainHero";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -233,31 +234,35 @@ export default function AnimatedHero() {
             style={{ fontSize: "clamp(1rem, 2vw, 2rem)" }}
           >
             From React, Next.js, Node.js, Django, Flutter, and React Native to
-            AI, cloud, databases, and DevOps — Ongshak builds scalable digital
+            AI, cloud, databases, and DevOps. Ongshak builds scalable digital
             products with the technologies modern businesses need.
           </p>
 
           <div className="flex flex-wrap items-center gap-3">
-            <button
-              className="rounded-full w-full md:w-fit px-6 py-3 font-semibold shadow-lg transition hover:scale-[1.02]"
-              style={{
-                background: "linear-gradient(135deg, #FFA605 0%, #FD7D18 100%)",
-                WebkitTextFillColor: "#111827",
-              }}
-            >
-              Explore Our Stack
-            </button>
-
-            <button
-              className="rounded-full w-full md:w-fit border px-6 py-3 font-semibold backdrop-blur-md transition hover:scale-[1.02]"
-              style={{
-                borderColor: "#32c2d88c",
-                background: "rgba(19, 93, 201, 0.12)",
-                WebkitTextFillColor: "#32C2D8",
-              }}
-            >
-              Build With Us →
-            </button>
+            <Link href="/services#stack">
+              <button
+                className="rounded-full w-full md:w-fit px-6 py-3 font-semibold shadow-lg transition hover:scale-[1.02]"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #FFA605 0%, #FD7D18 100%)",
+                  WebkitTextFillColor: "#111827",
+                }}
+              >
+                Explore Our Stack
+              </button>
+            </Link>
+            <Link href="/contact">
+              <button
+                className="rounded-full w-full md:w-fit border px-6 py-3 font-semibold backdrop-blur-md transition hover:scale-[1.02]"
+                style={{
+                  borderColor: "#32c2d88c",
+                  background: "rgba(19, 93, 201, 0.12)",
+                  WebkitTextFillColor: "#32C2D8",
+                }}
+              >
+                Build With Us →
+              </button>
+            </Link>
           </div>
 
           <div

@@ -77,7 +77,7 @@ export default function ContactPage() {
         </h1>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
-          Whether you have a detailed brief or just a rough idea — we&apos;re
+          Whether you have a detailed brief or just a rough idea we&apos;re
           ready to listen.
         </p>
       </section>
@@ -238,7 +238,8 @@ export default function ContactPage() {
                     <div className="text-sm text-white/50">Office</div>
                     <div className="font-medium">Ongshak</div>
                     <div className="text-sm text-white/70">
-                      113 Love Rd, Dhaka, Bangladesh
+                      113/A, Love Road, Tejgaon Industrial Area, Dhaka-1208,
+                      Bangladesh
                     </div>
                   </div>
                 </div>
@@ -246,7 +247,7 @@ export default function ContactPage() {
                 <div className="mt-4 aspect-video w-full overflow-hidden rounded-lg border border-white/10">
                   <iframe
                     title="Ongshak office map"
-                    src="https://www.google.com/maps?q=113+Love+Rd,+Dhaka+1208,+Bangladesh&output=embed"
+                    src="https://www.google.com/maps?q=113/A+Love+Road+Tejgaon+Industrial+Area+Dhaka+1208+Bangladesh&output=embed"
                     className="h-full w-full grayscale"
                     loading="lazy"
                   />

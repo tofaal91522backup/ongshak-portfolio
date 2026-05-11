@@ -1,7 +1,7 @@
 # Next.js Template (App Router + Turbopack)
 
 A production-ready **Next.js App Router** starter with a **feature-based modular architecture**.  
-Uses **Turbopack** for fast dev/build and supports running on a custom **`PORT` from `.env`** — **no `next.config.js` changes needed**.
+Uses **Turbopack** for fast dev/build and supports running on a custom **`PORT` from `.env`** **no `next.config.js` changes needed**.
 
 ---
 
@@ -44,7 +44,6 @@ PORT=5001
 ```bash
 npm i
 ```
-
 
 ### Development
 
@@ -149,7 +148,7 @@ NEXTJS-TEMPLATE/
    │  │  │  ├── BlogIndexRoute.tsx     # for /blog
    │  │  │  └── BlogSlugRoute.tsx      # for /blog/[slugId]
    │  │  ├
-   │  │  │  
+   │  │  │
    │  │  ├── services/
    │  │  │  └── blog.service.ts
    │  │  ├── schemas/
@@ -163,7 +162,7 @@ NEXTJS-TEMPLATE/
    │  │  │  ├── ForgetPasswordRoute.tsx
    │  │  │  └── ResetPasswordRoute.tsx
    │  │  ├
-   │  │  │  
+   │  │  │
    │  │  ├── services/
    │  │  │  └── auth.service.ts
    │  │  ├── schemas/
@@ -192,10 +191,10 @@ NEXTJS-TEMPLATE/
    │  ├── http/
    │  │  ├── apiClient.ts            # fetch/axios wrapper, interceptors
    │  │  ├── apiServer.ts            # fetch/axios wrapper, interceptors
-   │  │  ├── publicServer.ts         
-   │  │  ├── request.ts             
+   │  │  ├── publicServer.ts
+   │  │  ├── request.ts
    │  │  ├── errors.ts
-   │  │  
+   │  │
    │  ├── env.ts                  # zod env validation (optional)
    │  └── utils.ts
    │
@@ -206,5 +205,3 @@ NEXTJS-TEMPLATE/
    ├── types/                     # ONLY truly global cross-feature types
    └── utils/
 ```
-
-

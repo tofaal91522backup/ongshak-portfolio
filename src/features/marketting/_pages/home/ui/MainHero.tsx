@@ -6,46 +6,28 @@ import { ArrowRight } from "lucide-react";
 export default function MainHero() {
   return (
     <section className="relative isolate min-h-screen w-full overflow-hidden bg-[#05070d] text-white">
-      {/* Background video */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 h-full w-full object-cover opacity-70"
-      >
-        <source src="/hero.mp4" type="video/mp4" />
-      </video>
-
       {/* Cinematic overlays */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#05070d]/90 via-[#05070d]/55 to-[#05070d]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(19,93,201,0.3),transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(255,166,5,0.2),transparent_55%)]" />
 
-      {/* Animated glow orbs */}
-      <div className="pointer-events-none absolute -left-32 top-1/3 h-[28rem] w-[28rem] animate-pulse rounded-full bg-[#135DC9]/30 blur-[160px]" />
-      <div
-        className="pointer-events-none absolute -right-32 top-20 h-[28rem] w-[28rem] animate-pulse rounded-full bg-[#FFA605]/25 blur-[180px]"
-        style={{ animationDelay: "1.5s" }}
-      />
-      <div
-        className="pointer-events-none absolute bottom-0 left-1/2 h-80 w-[44rem] -translate-x-1/2 animate-pulse rounded-full bg-[#32C2D8]/20 blur-[180px]"
-        style={{ animationDelay: "3s" }}
-      />
+      {/* Glow orbs */}
+      <div className="pointer-events-none absolute -left-32 top-1/3 h-[28rem] w-[28rem] rounded-full bg-[#135DC9]/30 blur-[160px]" />
+      <div className="pointer-events-none absolute -right-32 top-20 h-[28rem] w-[28rem] rounded-full bg-[#FFA605]/25 blur-[180px]" />
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-80 w-[44rem] -translate-x-1/2 rounded-full bg-[#32C2D8]/20 blur-[180px]" />
 
       {/* Soft noise / vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(0,0,0,0.6)_100%)]" />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 py-32 text-center sm:px-8">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-6 py-20 text-center sm:px-8 sm:py-32">
         {/* Eyebrow / badge */}
         <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.25em] text-white/80 backdrop-blur-md">
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#32C2D8] opacity-75" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#32C2D8] shadow-[0_0_12px_#32C2D8]" />
           </span>
-          Ongshak — Since 2021
+          Ongshak Since 2021
         </div>
 
         {/* Headline */}
@@ -58,7 +40,7 @@ export default function MainHero() {
 
         {/* Subtext */}
         <p className="mt-8 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg md:text-xl">
-          We are <span className="font-semibold text-white">Ongshak</span> — a
+          We are <span className="font-semibold text-white">Ongshak</span>  a
           technology partner that builds software, AI systems, and digital
           products for companies that need things done right. From MVPs to
           enterprise platforms, since 2021.

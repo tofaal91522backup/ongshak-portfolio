@@ -55,7 +55,7 @@ const industries = [
     icon: HandHeart,
     name: "NGO & Social Impact",
     description:
-      "Technology for organisations driving social change — beneficiary tracking, impact measurement, and community platforms.",
+      "Technology for organisations driving social change  beneficiary tracking, impact measurement, and community platforms.",
     work: "Drishti's District Ambassador Program, social impact angle of Khar Active",
     cta: "Driving impact with technology? We share that mission.",
   },

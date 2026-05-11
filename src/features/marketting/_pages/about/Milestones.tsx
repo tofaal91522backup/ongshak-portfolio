@@ -146,7 +146,7 @@ function MilestoneItem({
     >
       {/* Dot wrapper */}
       <div className="relative inline-flex items-center justify-center w-10 h-10">
-        {/* Pulse rings — only when active */}
+        {/* Pulse rings  only when active */}
         {isActive && (
           <>
             <span className="ms-ring-1 absolute inset-0 rounded-full border border-[#FFA605]/40 pointer-events-none" />

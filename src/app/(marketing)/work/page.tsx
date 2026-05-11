@@ -55,7 +55,7 @@ const projects: Project[] = [
     category: "Manufacturing",
     tag: "Manufacturing / Industrial Website",
     description:
-      "A premium digital platform for Bangladesh's leading stainless steel pipe manufacturer — showcasing product categories, factory strength, certifications, and nationwide trust.",
+      "A premium digital platform for Bangladesh's leading stainless steel pipe manufacturer  showcasing product categories, factory strength, certifications, and nationwide trust.",
     link: "https://www.steeltech-bd.com/",
     image: "/images/work/steeltech.png", // 👈 add image link
     accent: "from-slate-400/25 to-blue-500/5",
@@ -115,8 +115,8 @@ const projects: Project[] = [
     details: {
       what: "Climate-resilient, zero-energy water harvesting towers for remote villages in the Chittagong Hill Tracts. Supported by TIKA, tested by ICDDR,B, covered by the World Economic Forum.",
       built:
-        "A storytelling-first site with a live impact dashboard — walking visitors through the problem, the technology, and real-time deployment metrics. Beneficiary stories from Mro communities are featured prominently.",
-      why: "The build demanded design that conveys urgency and hope simultaneously — and a live dashboard giving donors real-time visibility into impact through a real data pipeline.",
+        "A storytelling-first site with a live impact dashboard  walking visitors through the problem, the technology, and real-time deployment metrics. Beneficiary stories from Mro communities are featured prominently.",
+      why: "The build demanded design that conveys urgency and hope simultaneously  and a live dashboard giving donors real-time visibility into impact through a real data pipeline.",
       metrics: [
         "Zero electricity required",
         "22-year tower lifespan",
@@ -130,7 +130,7 @@ const projects: Project[] = [
     category: "Sports & Entertainment",
     tag: "Combat Sports / Event Platform",
     description:
-      "A bold digital platform for Bangladesh's combat sports scene — bringing MMA-style fight nights, athlete stories, ticketing, and underground culture into one experience.",
+      "A bold digital platform for Bangladesh's combat sports scene  bringing MMA-style fight nights, athlete stories, ticketing, and underground culture into one experience.",
     link: "https://khar.co/",
     image: "/images/work/khar.png", // 👈 add image link
     accent: "from-red-400/25 to-orange-500/5",
@@ -138,7 +138,7 @@ const projects: Project[] = [
     badgeColor: "text-red-300 border-red-300/30",
     featured: true,
     details: {
-      what: "A combat sports and entertainment brand building a new fight-night culture in Dhaka — blending athletic intensity, live events, athlete storytelling, and underground aesthetics.",
+      what: "A combat sports and entertainment brand building a new fight-night culture in Dhaka  blending athletic intensity, live events, athlete storytelling, and underground aesthetics.",
       built:
         "A high-energy digital platform that presents Khar's events, athletes, podcasts, news, and ticketing experience with a bold visual identity made for modern sports audiences.",
       why: "Khar needed a digital presence that could capture the intensity of combat sports while also helping audiences discover events, follow athletes, and buy tickets easily.",
@@ -156,7 +156,7 @@ const projects: Project[] = [
     category: "Social Impact",
     tag: "Social Impact / Innovation",
     description:
-      "A digital platform powering Bangladesh's RMG innovation ecosystem — backed by H&M Foundation, The Asia Foundation, and Sweden.",
+      "A digital platform powering Bangladesh's RMG innovation ecosystem  backed by H&M Foundation, The Asia Foundation, and Sweden.",
     link: "https://buildbangladesh.com.bd",
     image: "/images/work/build-bd.png", // 👈 add image link
     accent: "from-amber-400/25 to-orange-500/5",
@@ -164,9 +164,9 @@ const projects: Project[] = [
     badgeColor: "text-amber-300 border-amber-300/30",
     featured: true,
     details: {
-      what: "A social enterprise driving innovation and transformation in Bangladesh's Ready-Made Garments sector — running accelerators, innovation challenges, and ecosystem-building initiatives.",
+      what: "A social enterprise driving innovation and transformation in Bangladesh's Ready-Made Garments sector  running accelerators, innovation challenges, and ecosystem-building initiatives.",
       built:
-        "A complete digital platform that serves as the public face and operational hub of their mission — communicating programmes, partnerships, and impact to a global audience of funders, startups, and stakeholders.",
+        "A complete digital platform that serves as the public face and operational hub of their mission  communicating programmes, partnerships, and impact to a global audience of funders, startups, and stakeholders.",
       why: "Their digital presence needed to match the credibility of their partners and the ambition of their mission to transform an industry.",
       metrics: [
         "H&M Foundation backed",
@@ -193,7 +193,7 @@ const projects: Project[] = [
       what: "An impact-driven angel investment network connecting high-net-worth individuals with vetted early-stage startups in Bangladesh's fashion manufacturing industry.",
       built:
         "A polished, investor-grade platform covering investment thesis, angel criteria, sector focus, 6-stage startup selection pipeline, and structured co-investment model.",
-      why: "The platform needed to inspire confidence in sophisticated investors while clearly communicating a niche thesis — institutional and trustworthy, not a typical startup page.",
+      why: "The platform needed to inspire confidence in sophisticated investors while clearly communicating a niche thesis  institutional and trustworthy, not a typical startup page.",
       metrics: [
         "$20K minimum commitment",
         "6 sector focus areas",
@@ -216,16 +216,16 @@ const projects: Project[] = [
     badgeColor: "text-fuchsia-300 border-fuchsia-300/30",
     featured: true,
     details: {
-      what: "An AI-powered travel discovery platform for Thailand — from Bangkok to Chiang Mai to the southern islands.",
+      what: "An AI-powered travel discovery platform for Thailand  from Bangkok to Chiang Mai to the southern islands.",
       built:
         "A modern, AI-integrated travel platform combining curated content with intelligent recommendations through a single, intuitive interface.",
-      why: "Demonstrates Ongshak's ability to deliver AI-integrated consumer products for international markets — not a brochure site, a working AI application.",
+      why: "Demonstrates Ongshak's ability to deliver AI-integrated consumer products for international markets  not a brochure site, a working AI application.",
       metrics: ["AI recommendations", ".ai domain", "International market"],
     },
   },
   {
     name: "Needle Innovation Challenge",
-    client: "Build Bangladesh — Oporajita",
+    client: "Build Bangladesh  Oporajita",
     category: "Innovation & Startups",
     tag: "Innovation & Startups",
     description:
@@ -239,8 +239,8 @@ const projects: Project[] = [
     details: {
       what: "A multi-year programme under Oporajita (14 organisations, led by H&M Foundation) accelerating innovation across sustainable materials, circular economy, assistive tech, and process innovation.",
       built:
-        "A dedicated platform covering programme info, application portal, 6 solution areas, startup showcases, partner visibility, and bootcamp updates — serving both applicants and institutional partners.",
-      why: "NIC is the first programme of its kind in Bangladesh — a structured innovation pipeline for the RMG sector. The platform is its public gateway.",
+        "A dedicated platform covering programme info, application portal, 6 solution areas, startup showcases, partner visibility, and bootcamp updates  serving both applicants and institutional partners.",
+      why: "NIC is the first programme of its kind in Bangladesh  a structured innovation pipeline for the RMG sector. The platform is its public gateway.",
       metrics: [
         "BDT 650K grants",
         "81 shortlisted from 29 universities",
@@ -254,17 +254,17 @@ const projects: Project[] = [
     category: "Enterprise & ERP",
     tag: "Enterprise & ERP",
     description:
-      "Cloud-hosted ERP delivered in 4 weeks — service scheduling, inventory, double-entry accounting, and real-time KPI dashboards.",
+      "Cloud-hosted ERP delivered in 4 weeks  service scheduling, inventory, double-entry accounting, and real-time KPI dashboards.",
     image: "", // 👈 add image link
     accent: "from-violet-400/25 to-purple-500/5",
     ring: "ring-violet-400/20",
     badgeColor: "text-violet-300 border-violet-300/30",
     featured: true,
     details: {
-      what: "A comprehensive ERP for a water purifier service and rental business — managing service scheduling, machine registration, rental billing, inventory, double-entry accounting, and real-time dashboards.",
+      what: "A comprehensive ERP for a water purifier service and rental business  managing service scheduling, machine registration, rental billing, inventory, double-entry accounting, and real-time dashboards.",
       built:
         "Secure, cloud-hosted ERP on Django 5 + DRF and Next.js 14. Delivered in 4 weeks across 5 modules: Service, Inventory, Accounting, Dashboards, and Security & Compliance. Dockerised on a BD data-centre VPS with staging + production.",
-      why: "Showcases end-to-end product engineering — RBAC, accounting engine, inventory, real-time dashboards, and production deployment — in just 4 weeks.",
+      why: "Showcases end-to-end product engineering  RBAC, accounting engine, inventory, real-time dashboards, and production deployment  in just 4 weeks.",
       metrics: [
         "4-week delivery",
         "5 modules shipped",
@@ -313,7 +313,7 @@ export default function WorkPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
             From social impact platforms to AI-powered travel tools to
-            enterprise ERP systems — we build technology that works in the real
+            enterprise ERP systems we build technology that works in the real
             world.
           </p>
           <section className="mx-auto container px-6 pt-20">
@@ -428,7 +428,7 @@ export default function WorkPage() {
 
         <div className="mt-12 rounded-2xl border border-dashed border-white/15 bg-white/[0.02] p-8 text-center">
           <p className="text-white/70">
-            And many more — <span className="text-white">347+ projects</span>{" "}
+            And many more <span className="text-white">347+ projects</span>{" "}
             delivered since 2021.
           </p>
           <Link

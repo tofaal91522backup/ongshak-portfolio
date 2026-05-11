@@ -1,4 +1,5 @@
 // app/services/page.tsx
+import Image from "next/image";
 import Link from "next/link";
 import {
   Code2,
@@ -19,7 +20,7 @@ const services = [
   {
     icon: Code2,
     title: "Product Engineering",
-    desc: "We build digital products from zero to production. Our engineering teams handle architecture, development, testing, and deployment — so you focus on your business, not your codebase.",
+    desc: "We build digital products from zero to production. Our engineering teams handle architecture, development, testing, and deployment  so you focus on your business, not your codebase.",
     items: [
       "Web Application Development (React, Next.js, Django, Laravel)",
       "Mobile App Development (Flutter, React Native, Native iOS/Android)",
@@ -35,7 +36,7 @@ const services = [
   {
     icon: Brain,
     title: "AI & Machine Learning",
-    desc: "We build AI that works in the real world — on factory floors, in healthcare systems, and inside business workflows.",
+    desc: "We build AI that works in the real world  on factory floors, in healthcare systems, and inside business workflows.",
     items: [
       "Computer Vision (defect detection, object recognition, image classification)",
       "Natural Language Processing (chatbots, document analysis, sentiment analysis)",
@@ -133,29 +134,27 @@ const process = [
   },
 ];
 
-const stack = [
-  {
-    group: "Frontend",
-    items: ["React", "Next.js", "Vue", "Angular", "Tailwind CSS"],
-  },
-  {
-    group: "Backend",
-    items: ["Node.js", "Django", "Laravel", "Flask", "Express"],
-  },
-  { group: "Mobile", items: ["Flutter", "React Native", "Swift", "Kotlin"] },
-  {
-    group: "AI / ML",
-    items: ["Python", "TensorFlow", "PyTorch", "OpenCV", "Scikit-learn"],
-  },
-  { group: "Cloud", items: ["AWS", "GCP", "Azure", "DigitalOcean"] },
-  {
-    group: "Database",
-    items: ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Firebase"],
-  },
-  {
-    group: "DevOps",
-    items: ["Docker", "Kubernetes", "GitHub Actions", "Jenkins"],
-  },
+const webTechs = [
+  { name: "Next.js", icon: "/images/tech-icons/nextjs.svg" },
+  { name: "Django", icon: "/images/tech-icons/django.svg" },
+  { name: "PostgreSQL", icon: "/images/tech-icons/postgresql.svg" },
+  { name: "AWS", icon: "/images/tech-icons/aws.svg" },
+  { name: "AWS Lambda", icon: "/images/tech-icons/aws-lambda.svg" },
+  { name: "Nginx", icon: "/images/tech-icons/nginx.svg" },
+  { name: "Firebase", icon: "/images/tech-icons/firebase.svg" },
+];
+
+const mobileTechs = [
+  { name: "React Native", icon: "/images/tech-icons/react.svg" },
+  { name: "Flutter", icon: "/images/tech-icons/flutter.svg" },
+];
+
+const embeddedTechs = [
+  { name: "STM32", icon: "/images/tech-icons/stm32.svg" },
+  { name: "Arduino", icon: "/images/tech-icons/arduino.svg" },
+  { name: "Raspberry Pi", icon: "/images/tech-icons/raspberry-pi.svg" },
+  { name: "Jetson Nano", icon: "/images/tech-icons/nvidia.svg" },
+  { name: "PlatformIO", icon: "/images/tech-icons/platformio.svg" },
 ];
 
 const models = [
@@ -201,7 +200,7 @@ export default function ServicesPage() {
           <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
             From strategy to deployment, we cover every layer of the stack.
             Whether you need a full product build, an AI solution, or a
-            dedicated team extension — we’ve done it{" "}
+            dedicated team extension we’ve done it{" "}
             <span className="text-white">347+ times</span>.
           </p>
           <div className="relative mt-16">
@@ -269,7 +268,7 @@ export default function ServicesPage() {
           <div className="text-center">
             <h2 className="text-3xl font-semibold sm:text-4xl">How We Work</h2>
             <p className="mt-3 text-white/60">
-              A clear path from idea to launch — and beyond.
+              A clear path from idea to launch  and beyond.
             </p>
           </div>
 
@@ -297,35 +296,50 @@ export default function ServicesPage() {
       </section> */}
 
       {/* TECH STACK */}
-      <section className="mx-auto container px-6 py-24">
+      <section className="mx-auto container px-6 py-24" id="stack">
         <div className="text-center">
-          <h2 className="text-3xl font-semibold sm:text-4xl">Tech Stack</h2>
-          <p className="mt-3 text-white/60">
+          <h2 className="text-3xl font-semibold sm:text-4xl bg-gradient-to-r from-[#FFA605] via-[#FD7D18] to-[#32C2D8] bg-clip-text text-transparent">Tech Stack</h2>
+          <p className="mt-3 bg-gradient-to-r from-[#FFA605]/70 via-white/60 to-[#32C2D8]/70 bg-clip-text text-transparent">
             The tools we reach for, grouped by layer.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {stack.map((g) => (
-            <div
-              key={g.group}
-              className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-colors hover:border-white/20"
-            >
-              <div className="text-xs font-medium uppercase tracking-[0.2em] text-amber-300/80">
-                {g.group}
-              </div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {g.items.map((it) => (
-                  <span
-                    key={it}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/80 transition-colors hover:border-amber-300/40 hover:text-amber-200"
-                  >
-                    {it}
-                  </span>
-                ))}
-              </div>
+        <div className="mt-14 flex flex-col gap-12 max-w-3xl mx-auto">
+          {/* Web */}
+          <div className="text-center">
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] mb-6 text-[#32C2D8]">
+              Web
+            </p>
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-7">
+              {webTechs.map((tech) => (
+                <TechIcon key={tech.name} src={tech.icon} name={tech.name} />
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Mobile */}
+          <div className="text-center">
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] mb-6 text-[#FFA605]">
+              Mobile
+            </p>
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-7">
+              {mobileTechs.map((tech) => (
+                <TechIcon key={tech.name} src={tech.icon} name={tech.name} />
+              ))}
+            </div>
+          </div>
+
+          {/* Embedded & IoT */}
+          <div className="text-center">
+            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] mb-6 text-[#FD7D18]">
+              Embedded &amp; IoT
+            </p>
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-7">
+              {embeddedTechs.map((tech) => (
+                <TechIcon key={tech.name} src={tech.icon} name={tech.name} />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -374,5 +388,22 @@ export default function ServicesPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+function TechIcon({ src, name }: { src: string; name: string }) {
+  return (
+    <div className="flex flex-col items-center gap-1.5 w-12 sm:w-16">
+      <Image
+        src={src}
+        alt={name}
+        width={40}
+        height={40}
+        className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+      />
+      <span className="text-[9px] sm:text-[11px] text-center leading-tight text-white/65">
+        {name}
+      </span>
+    </div>
   );
 }

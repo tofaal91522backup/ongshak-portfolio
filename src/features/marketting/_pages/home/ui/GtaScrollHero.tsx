@@ -62,7 +62,11 @@ export default function GTAVIPage() {
         .to(".hero-main-container", { scale: 1, duration: 1 })
         .to(".hero-main-logo", { opacity: 0, duration: 0.5 }, "<")
         .to(".hero-main-image", { opacity: 0, duration: 0.9 }, "<+=0.5")
-        .to(".hero-main-container", { backgroundSize: "28vh", duration: 1.5 }, "<+=0.2")
+        .to(
+          ".hero-main-container",
+          { backgroundSize: "28vh", duration: 1.5 },
+          "<+=0.2",
+        )
         .fromTo(
           ".hero-text",
           {
@@ -72,7 +76,7 @@ export default function GTAVIPage() {
             backgroundImage: `radial-gradient(circle at 50% 3.9575vh, rgb(255, 213, 133) 0vh, rgb(247, 77, 82) 50.011vh, rgb(145, 42, 105) 90.0183vh, rgba(32, 31, 66, 0) 140.599vh)`,
             duration: 3,
           },
-          "<1.2"
+          "<1.2",
         )
         .fromTo(
           ".hero-text-logo",
@@ -85,7 +89,7 @@ export default function GTAVIPage() {
             maskImage: `radial-gradient(circle at 50% 105.594%, rgb(0, 0, 0) 62.9372%, rgba(0, 0, 0, 0) 81.4686%)`,
             duration: 3,
           },
-          "<0.2"
+          "<0.2",
         )
         .set(".hero-main-container", { opacity: 0 })
         .to(".hero-1-container", { scale: 0.85, duration: 3 }, "<-=3")
@@ -94,7 +98,7 @@ export default function GTAVIPage() {
           {
             maskImage: `radial-gradient(circle at 50% 16.1137vh, rgb(0, 0, 0) 96.1949vh, rgba(0, 0, 0, 0) 112.065vh)`,
           },
-          "<+=2.1"
+          "<+=2.1",
         )
         .to(
           ".hero-1-container",
@@ -102,7 +106,7 @@ export default function GTAVIPage() {
             maskImage: `radial-gradient(circle at 50% -40vh, rgb(0, 0, 0) 0vh, rgba(0, 0, 0, 0) 80vh)`,
             duration: 2,
           },
-          "<+=0.2"
+          "<+=0.2",
         )
         .to(".hero-text-logo", { opacity: 0, duration: 2 }, "<1.5")
         .set(".hero-1-container", { opacity: 0 })
@@ -117,10 +121,10 @@ export default function GTAVIPage() {
             backgroundImage: `radial-gradient(circle at 50% 3.9575vh, rgb(255, 213, 133) 0vh, rgb(247, 77, 82) 50.011vh, rgb(145, 42, 105) 90.0183vh, rgba(32, 31, 66, 0) 140.599vh)`,
             duration: 3,
           },
-          "<1.2"
+          "<1.2",
         );
     },
-    { scope: containerRef } // Scopes all animations to containerRef
+    { scope: containerRef }, // Scopes all animations to containerRef
   );
 
   return (
@@ -173,8 +177,10 @@ export default function GTAVIPage() {
                 backgroundImage: `radial-gradient(circle at 50% 200vh, rgba(255, 214, 135, 0) 0, rgba(157, 47, 106, 0.5) 90vh, rgba(157, 47, 106, 0.8) 120vh, rgba(32, 31, 66, 0) 150vh)`,
               }}
             >
-              Coming<br />
-              May 26<br />
+              Coming
+              <br />
+              May 26
+              <br />
               2026
             </h3>
           </div>
@@ -194,7 +200,7 @@ export default function GTAVIPage() {
           Jason and Lucia have always known the deck is stacked against them.
           But when an easy score goes wrong, they find themselves on the darkest
           side of the sunniest place in America, in the middle of a criminal
-          conspiracy stretching across the state of Leonida — forced to rely on
+          conspiracy stretching across the state of Leonida forced to rely on
           each other more than ever if they want to make it out alive.
         </p>
       </div>

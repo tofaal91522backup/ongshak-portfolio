@@ -17,7 +17,7 @@ export const services = [
   {
     title: "Product Engineering",
     description:
-      "We design, build, and scale digital products — web apps, SaaS platforms, mobile apps, MVPs, and internal systems.",
+      "We design, build, and scale digital products  web apps, SaaS platforms, mobile apps, MVPs, and internal systems.",
   },
   {
     title: "AI & Automation",

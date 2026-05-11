@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(curl -s https://raw.githubusercontent.com/simple-icons/simple-icons/develop/_data/simple-icons.json)",
+      "Bash(curl -s \"https://simpleicons.org\")",
+      "Bash(curl -L -s \"https://raw.githubusercontent.com/simple-icons/simple-icons/develop/_data/simple-icons.json\")",
+      "Bash(curl -L -s \"https://raw.githubusercontent.com/simple-icons/simple-icons/master/_data/simple-icons.json\")",
+      "Bash(curl -I \"https://raw.githubusercontent.com/simple-icons/simple-icons/master/_data/simple-icons.json\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/nextdotjs.svg\")"
+    ]
+  }
+}

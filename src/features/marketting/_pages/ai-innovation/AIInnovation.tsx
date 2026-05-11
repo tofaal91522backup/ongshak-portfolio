@@ -42,7 +42,7 @@ const capabilities = [
     icon: Workflow,
     title: "Intelligent Automation",
     description:
-      "End-to-end automation of manual processes — from data entry to quality control to reporting.",
+      "End-to-end automation of manual processes  from data entry to quality control to reporting.",
     deployed: [],
   },
   {
@@ -125,13 +125,13 @@ export default function AIInnovation() {
           </span>
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-white/60">
-          We build AI systems that work in the real world — on factory floors,
-          in healthcare, and inside business workflows. Not demos. Not decks.
+          We build AI systems that work in the real world on factory floors, in
+          healthcare, and inside business workflows. Not demos. Not decks.
           Deployed systems with measurable impact.
         </p>
       </section>
 
-      {/* Capabilities — accordion */}
+      {/* Capabilities  accordion */}
       <section className="relative mx-auto container px-6 py-16">
         <div className="mb-10 text-center">
           <h2 className="text-3xl font-bold md:text-4xl">AI Capabilities</h2>
@@ -197,7 +197,7 @@ export default function AIInnovation() {
           <h2 className="text-3xl font-bold md:text-4xl">Innovation Lab</h2>
           <p className="mt-4 text-lg text-white/60">
             Ongshak isn&apos;t just a services company. We build our own
-            products — and that&apos;s what makes us better at building yours.
+            products and that&apos;s what makes us better at building yours.
           </p>
         </div>
 
@@ -232,8 +232,7 @@ export default function AIInnovation() {
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold md:text-4xl">Thought Leadership</h2>
           <p className="mt-4 text-white/60">
-            Our team doesn&apos;t just build — we contribute to the
-            conversation.
+            Our team doesn&apos;t just build we contribute to the conversation.
           </p>
         </div>
 
