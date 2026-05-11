@@ -7,6 +7,28 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import MainHero from "./MainHero";
 import Link from "next/link";
+import Image from "next/image";
+
+const webTechs = [
+  { name: "Next.js", icon: "/images/tech-icons/nextjs.svg" },
+  { name: "Django", icon: "/images/tech-icons/django.svg" },
+  { name: "PostgreSQL", icon: "/images/tech-icons/postgresql.svg" },
+  { name: "AWS", icon: "/images/tech-icons/aws.svg" },
+  { name: "AWS Lambda", icon: "/images/tech-icons/aws-lambda.svg" },
+  { name: "Nginx", icon: "/images/tech-icons/nginx.svg" },
+  { name: "Firebase", icon: "/images/tech-icons/firebase.svg" },
+];
+const mobileTechs = [
+  { name: "React Native", icon: "/images/tech-icons/react.svg" },
+  { name: "Flutter", icon: "/images/tech-icons/flutter.svg" },
+];
+const embeddedTechs = [
+  { name: "STM32", icon: "/images/tech-icons/stm32.svg" },
+  { name: "Arduino", icon: "/images/tech-icons/arduino.svg" },
+  { name: "Raspberry Pi", icon: "/images/tech-icons/raspberry-pi.svg" },
+  { name: "Jetson Nano", icon: "/images/tech-icons/nvidia.svg" },
+  { name: "PlatformIO", icon: "/images/tech-icons/platformio.svg" },
+];
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -234,7 +256,7 @@ export default function AnimatedHero() {
 
       {/* Hero 2 */}
       <div
-        className="hero-2-container w-full h-screen absolute inset-0 flex flex-col gap-8 justify-center items-start text-left px-8 lg:px-0"
+        className="hero-2-container w-full h-screen absolute inset-0 flex flex-col gap-6 justify-center items-center px-6"
         style={{
           opacity: 0,
           visibility: "hidden",
@@ -243,63 +265,130 @@ export default function AnimatedHero() {
           backgroundClip: "text",
         }}
       >
-        <div className="w-full lg:max-w-[60%] lg:mx-auto flex flex-col md:gap-8 gap-6">
-          <h3 className="font-bold text-4xl lg:text-5xl text-center md:text-start">
-            Tech Stack That Powers Modern Products.
-          </h3>
+        {/* Heading */}
+        <h3 className="font-bold text-3xl lg:text-4xl text-center leading-tight">
+          Tech Stack That Powers Modern Products.
+        </h3>
 
-          <p
-            className="text-center md:text-left text-gray-300"
-            style={{ fontSize: "clamp(1rem, 2vw, 2rem)" }}
-          >
-            From React, Next.js, Node.js, Django, Flutter, and React Native to
-            AI, cloud, databases, and DevOps. Ongshak builds scalable digital
-            products with the technologies modern businesses need.
-          </p>
-
-          <div className="flex justify-center md:justify-start  items-center gap-3">
-            <Link href="/services#stack">
-              <button
-                className="rounded-full md:px-6 px-3 md:py-3 py-2.5 font-semibold shadow-lg transition hover:scale-[1.02]"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #FFA605 0%, #FD7D18 100%)",
-                  WebkitTextFillColor: "#111827",
-                }}
-              >
-                Explore Our Stack
-              </button>
-            </Link>
-            <Link href="/contact">
-              <button
-                className="rounded-full border md:px-6 px-3 md:py-3 py-2.5 font-semibold backdrop-blur-md transition hover:scale-[1.02]"
-                style={{
-                  borderColor: "#32c2d88c",
-                  background: "rgba(19, 93, 201, 0.12)",
-                  WebkitTextFillColor: "#32C2D8",
-                }}
-              >
-                Build With Us →
-              </button>
-            </Link>
+        {/* Three category columns */}
+        <div className="flex flex-col md:flex-row gap-7 md:gap-10 w-full max-w-3xl justify-center items-center md:items-start">
+          {/* Web */}
+          <div className="flex flex-col items-center gap-3">
+            <span
+              className="text-[10px] font-bold uppercase tracking-[0.25em]"
+              style={{ WebkitTextFillColor: "#32C2D8" }}
+            >
+              Web
+            </span>
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-4">
+              {webTechs.map((t) => (
+                <div key={t.name} className="flex flex-col items-center gap-1.5">
+                  <Image
+                    src={t.icon}
+                    alt={t.name}
+                    width={48}
+                    height={48}
+                    className="w-10 h-10 md:w-12 md:h-12 object-contain"
+                  />
+                  <span
+                    className="text-[9px] text-center leading-tight"
+                    style={{ WebkitTextFillColor: "rgba(255,255,255,0.55)" }}
+                  >
+                    {t.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div
-            className="flex flex-wrap items-center gap-x-4 gap-y-2 md:justify-start justify-center font-bold"
-            style={{
-              WebkitTextFillColor: "#32c2d88c",
-            }}
-          >
-            <span>347+ Projects</span>
-            <span className="opacity-40">|</span>
-            <span>50+ Clients</span>
-            <span className="opacity-40">|</span>
-            <span>5+ Years</span>
-            <span className="opacity-40">|</span>
-            <span>12+ Industries</span>
-            <span className="opacity-40">|</span>
-            <span>3 Ventures Built</span>
+          <div className="hidden md:block w-px self-stretch bg-white/10" />
+
+          {/* Mobile */}
+          <div className="flex flex-col items-center gap-3">
+            <span
+              className="text-[10px] font-bold uppercase tracking-[0.25em]"
+              style={{ WebkitTextFillColor: "#FFA605" }}
+            >
+              Mobile
+            </span>
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-4">
+              {mobileTechs.map((t) => (
+                <div key={t.name} className="flex flex-col items-center gap-1.5">
+                  <Image
+                    src={t.icon}
+                    alt={t.name}
+                    width={48}
+                    height={48}
+                    className="w-10 h-10 md:w-12 md:h-12 object-contain"
+                  />
+                  <span
+                    className="text-[9px] text-center leading-tight"
+                    style={{ WebkitTextFillColor: "rgba(255,255,255,0.55)" }}
+                  >
+                    {t.name}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
+
+          <div className="hidden md:block w-px self-stretch bg-white/10" />
+
+          {/* Embedded & IoT */}
+          <div className="flex flex-col items-center gap-3">
+            <span
+              className="text-[10px] font-bold uppercase tracking-[0.25em]"
+              style={{ WebkitTextFillColor: "#FD7D18" }}
+            >
+              Embedded &amp; IoT
+            </span>
+            <div className="flex flex-wrap justify-center gap-x-5 gap-y-4">
+              {embeddedTechs.map((t) => (
+                <div key={t.name} className="flex flex-col items-center gap-1.5">
+                  <Image
+                    src={t.icon}
+                    alt={t.name}
+                    width={48}
+                    height={48}
+                    className="w-10 h-10 md:w-12 md:h-12 object-contain"
+                  />
+                  <span
+                    className="text-[9px] text-center leading-tight"
+                    style={{ WebkitTextFillColor: "rgba(255,255,255,0.55)" }}
+                  >
+                    {t.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Buttons */}
+        <div className="flex items-center gap-3 mt-2">
+          <Link href="/work">
+            <button
+              className="rounded-full md:px-6 px-4 md:py-3 py-2.5 font-semibold shadow-lg transition hover:scale-[1.02]"
+              style={{
+                background: "linear-gradient(135deg, #FFA605 0%, #FD7D18 100%)",
+                WebkitTextFillColor: "#111827",
+              }}
+            >
+              Explore Our Work
+            </button>
+          </Link>
+          <Link href="/contact">
+            <button
+              className="rounded-full border md:px-6 px-4 md:py-3 py-2.5 font-semibold backdrop-blur-md transition hover:scale-[1.02]"
+              style={{
+                borderColor: "#32c2d88c",
+                background: "rgba(19, 93, 201, 0.12)",
+                WebkitTextFillColor: "#32C2D8",
+              }}
+            >
+              Build With Us →
+            </button>
+          </Link>
         </div>
       </div>
     </div>

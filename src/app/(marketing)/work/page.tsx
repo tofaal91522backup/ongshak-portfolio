@@ -255,7 +255,7 @@ const projects: Project[] = [
     tag: "Enterprise & ERP",
     description:
       "Cloud-hosted ERP delivered in 4 weeks  service scheduling, inventory, double-entry accounting, and real-time KPI dashboards.",
-    image: "", // 👈 add image link
+    image: "/images/work/hanzo.png", // 👈 add image link
     accent: "from-violet-400/25 to-purple-500/5",
     ring: "ring-violet-400/20",
     badgeColor: "text-violet-300 border-violet-300/30",

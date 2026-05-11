@@ -96,31 +96,25 @@ function ServiceCanvasCard({
   colors: number[][];
   gradient: string;
 }) {
-  const [hovered, setHovered] = React.useState(false);
-
   return (
     <motion.div
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
       whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 220, damping: 20 }}
       className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl transition-colors duration-300 hover:border-white/20"
     >
-      {/* Gradient ring on hover */}
+      {/* Gradient ring */}
       <div
-        className={`pointer-events-none absolute -inset-px rounded-3xl bg-gradient-to-br ${gradient} opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-30`}
+        className={`pointer-events-none absolute -inset-px rounded-3xl bg-gradient-to-br ${gradient} opacity-10 blur-md transition-opacity duration-500 group-hover:opacity-30`}
       />
 
-      {/* Canvas reveal effect (hover only) */}
-      <div className="absolute inset-0 overflow-hidden rounded-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        {hovered && (
-          <CanvasRevealEffect
-            animationSpeed={3}
-            containerClassName="bg-transparent"
-            colors={colors}
-            dotSize={2}
-          />
-        )}
+      {/* Canvas reveal effect (always visible) */}
+      <div className="absolute inset-0 overflow-hidden rounded-3xl opacity-50 transition-opacity duration-500 group-hover:opacity-100">
+        <CanvasRevealEffect
+          animationSpeed={3}
+          containerClassName="bg-transparent"
+          colors={colors}
+          dotSize={2}
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[#05070d] via-[#05070d]/70 to-transparent" />
       </div>
 
