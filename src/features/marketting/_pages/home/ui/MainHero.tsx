@@ -45,7 +45,7 @@ export default function MainHero() {
         </p>
 
         {/* CTA buttons */}
-        {/* <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:gap-5">
+        <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:gap-5">
           <Link
             href="/contact"
             className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-[#FFA605] to-[#FD7D18] px-8 py-4 text-sm font-semibold text-black shadow-[0_10px_40px_-10px_rgba(255,166,5,0.7)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_15px_50px_-10px_rgba(255,166,5,0.9)]"
@@ -62,7 +62,7 @@ export default function MainHero() {
             See Our Work
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-        </div> */}
+        </div>
 
         {/* Trust strip */}
         <div className="mt-20 md:flex hidden flex-wrap items-center justify-center gap-x-10 gap-y-4 text-xs uppercase tracking-[0.2em] text-white/40">

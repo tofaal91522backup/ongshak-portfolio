@@ -46,96 +46,115 @@ export default function AnimatedHero() {
         ease: "power1.inOut",
       });
 
-      // Main scroll timeline
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          scrub: 2,
-          pin: true,
-          start: "top top",
-          end: "+=2000",
-          // ease: "none",
-        },
-      });
+      const mm = gsap.matchMedia();
 
-      tl.set(".hero-main-container", { scale: 1.25 });
-
-      tl.to(".hero-main-container", { scale: 1, duration: 1 });
-
-      tl.to(".hero-main-logo", { opacity: 0, duration: 0.5 }, "<");
-
-      tl.to(".hero-main-image", { opacity: 0, duration: 0.9 }, "<+=0.5");
-
-      tl.to(
-        ".hero-main-container",
-        { backgroundSize: "28vh", duration: 1.5 },
-        "<+=0.2",
-      );
-
-      tl.fromTo(
-        ".hero-text",
+      mm.add(
         {
-          backgroundImage: logoGradientStart,
+          isDesktop: "(min-width: 768px)",
+          isMobile: "(max-width: 767px)",
         },
-        {
-          backgroundImage: logoGradientEnd,
-          duration: 3,
+        (context) => {
+          const { isMobile } = context.conditions as {
+            isDesktop: boolean;
+            isMobile: boolean;
+          };
+
+          const scrubValue = isMobile ? 0.5 : 2;
+          const scrollEnd = isMobile ? "+=1200" : "+=2000";
+
+          // Main scroll timeline
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: containerRef.current,
+              scrub: scrubValue,
+              pin: true,
+              start: "top top",
+              end: scrollEnd,
+              invalidateOnRefresh: true,
+            },
+            defaults: { force3D: true },
+          });
+
+          tl.set(".hero-main-container", { scale: 1.25 });
+
+          tl.to(".hero-main-container", { scale: 1, duration: 1 });
+
+          tl.to(".hero-main-logo", { opacity: 0, duration: 0.5 }, "<");
+
+          tl.to(".hero-main-image", { opacity: 0, duration: 0.9 }, "<+=0.5");
+
+          tl.to(
+            ".hero-main-container",
+            { backgroundSize: "28vh", duration: 1.5 },
+            "<+=0.2",
+          );
+
+          tl.fromTo(
+            ".hero-text",
+            {
+              backgroundImage: logoGradientStart,
+            },
+            {
+              backgroundImage: logoGradientEnd,
+              duration: 3,
+            },
+            "<1.2",
+          );
+
+          tl.fromTo(
+            ".hero-text-logo",
+            {
+              opacity: 0,
+              maskImage: `radial-gradient(circle at 50% 145.835%, rgb(0, 0, 0) 36.11%, rgba(0, 0, 0, 0) 68.055%)`,
+            },
+            {
+              opacity: 1,
+              maskImage: `radial-gradient(circle at 50% 105.594%, rgb(0, 0, 0) 62.9372%, rgba(0, 0, 0, 0) 81.4686%)`,
+              duration: 3,
+            },
+            "<0.2",
+          );
+
+          tl.set(".hero-main-container", { opacity: 0 });
+
+          tl.to(".hero-1-container", { scale: 0.85, duration: 3 }, "<-=3");
+
+          tl.set(
+            ".hero-1-container",
+            {
+              maskImage: `radial-gradient(circle at 50% 16.1137vh, rgb(0, 0, 0) 96.1949vh, rgba(0, 0, 0, 0) 112.065vh)`,
+            },
+            "<+=2.1",
+          );
+
+          tl.to(
+            ".hero-1-container",
+            {
+              maskImage: `radial-gradient(circle at 50% -40vh, rgb(0, 0, 0) 0vh, rgba(0, 0, 0, 0) 80vh)`,
+              duration: 2,
+            },
+            "<+=0.2",
+          );
+
+          tl.to(".hero-text-logo", { opacity: 0, duration: 2 }, "<1.5");
+
+          tl.set(".hero-1-container", { opacity: 0 });
+          tl.set(".hero-2-container", { visibility: "visible" });
+
+          tl.to(".hero-2-container", { opacity: 1, duration: 3 }, "<+=0.2");
+
+          tl.fromTo(
+            ".hero-2-container",
+            {
+              backgroundImage: logoGradientStart,
+            },
+            {
+              backgroundImage: logoGradientEnd,
+              duration: 3,
+            },
+            "<1.2",
+          );
         },
-        "<1.2",
-      );
-
-      tl.fromTo(
-        ".hero-text-logo",
-        {
-          opacity: 0,
-          maskImage: `radial-gradient(circle at 50% 145.835%, rgb(0, 0, 0) 36.11%, rgba(0, 0, 0, 0) 68.055%)`,
-        },
-        {
-          opacity: 1,
-          maskImage: `radial-gradient(circle at 50% 105.594%, rgb(0, 0, 0) 62.9372%, rgba(0, 0, 0, 0) 81.4686%)`,
-          duration: 3,
-        },
-        "<0.2",
-      );
-
-      tl.set(".hero-main-container", { opacity: 0 });
-
-      tl.to(".hero-1-container", { scale: 0.85, duration: 3 }, "<-=3");
-
-      tl.set(
-        ".hero-1-container",
-        {
-          maskImage: `radial-gradient(circle at 50% 16.1137vh, rgb(0, 0, 0) 96.1949vh, rgba(0, 0, 0, 0) 112.065vh)`,
-        },
-        "<+=2.1",
-      );
-
-      tl.to(
-        ".hero-1-container",
-        {
-          maskImage: `radial-gradient(circle at 50% -40vh, rgb(0, 0, 0) 0vh, rgba(0, 0, 0, 0) 80vh)`,
-          duration: 2,
-        },
-        "<+=0.2",
-      );
-
-      tl.to(".hero-text-logo", { opacity: 0, duration: 2 }, "<1.5");
-
-      tl.set(".hero-1-container", { opacity: 0 });
-      tl.set(".hero-2-container", { visibility: "visible" });
-
-      tl.to(".hero-2-container", { opacity: 1, duration: 3 }, "<+=0.2");
-
-      tl.fromTo(
-        ".hero-2-container",
-        {
-          backgroundImage: logoGradientStart,
-        },
-        {
-          backgroundImage: logoGradientEnd,
-          duration: 3,
-        },
-        "<1.2",
       );
     },
     { scope: containerRef },
@@ -238,7 +257,7 @@ export default function AnimatedHero() {
             products with the technologies modern businesses need.
           </p>
 
-          <div className="flex  items-center gap-3">
+          <div className="flex justify-center md:justify-start  items-center gap-3">
             <Link href="/services#stack">
               <button
                 className="rounded-full md:px-6 px-3 md:py-3 py-2.5 font-semibold shadow-lg transition hover:scale-[1.02]"
@@ -283,16 +302,6 @@ export default function AnimatedHero() {
           </div>
         </div>
       </div>
-
-      {/* Scroll Indicator
-      <div
-        className="scroll-indicator absolute left-1/2 -translate-x-1/2 ] z-10 flex flex-col items-center opacity-0"
-        style={{ bottom: "5%" }}
-      >
-        <span>Scroll down</span>
-        <ChevronDown />
-      </div> */}
     </div>
   );
 }
-// {/* <div className="hero-main-logo mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs font-medium uppercase tracking-[0.3em] text-white/80 backdrop-blur-md"> <span className="h-1.5 w-1.5 rounded-full bg-[#FFA605] shadow-[0_0_12px_#FFA605]" /> Ongshak </div> {/* Brand reveal text */} <h1 className="hero-text bg-clip-text font-serif text-6xl leading-[0.95] tracking-tight text-transparent sm:text-7xl md:text-8xl lg:text-[10rem]" style={{ backgroundImage: logoGradientStart }} > <span className="block">Ongshak</span> <span className="mt-2 block text-2xl font-sans font-light tracking-[0.4em] text-white/70 sm:text-3xl md:text-4xl"> SINCE 2021 </span> </h1> </div> */}
