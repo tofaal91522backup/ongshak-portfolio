@@ -95,10 +95,6 @@ export default function FeaturedWork() {
                     <p className="font-serif text-6xl leading-none text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]">
                       0{index + 1}
                     </p>
-
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md transition-all duration-500 group-hover:border-white/40 group-hover:bg-white/20">
-                      <ArrowRight className="h-4 w-4 -rotate-45 text-white transition-transform duration-500 group-hover:rotate-0" />
-                    </div>
                   </div>
 
                   {/* Industry chip floating on image */}

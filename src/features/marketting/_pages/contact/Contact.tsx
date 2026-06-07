@@ -54,11 +54,19 @@ export default function ContactPage() {
     e.preventDefault();
     setLoading(true);
 
-    // TODO: wire to your API route / email service
-    await new Promise((r) => setTimeout(r, 800));
+    const payload = {
+      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY!,
+      ...form,
+    };
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(payload),
+    });
 
     setLoading(false);
-    setSubmitted(true);
+    if (res.ok) setSubmitted(true);
   };
 
   return (
