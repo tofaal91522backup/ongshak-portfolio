@@ -56,6 +56,7 @@
 @theme inline {
   --font-sans: 'Inter', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-display: var(--font-instrument-serif), 'Times New Roman', Georgia, serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -107,6 +108,103 @@
 
 .animate-fade-rise-delay-2 {
   animation: fade-rise 0.8s ease-out 0.4s both;
+}
+
+/* ---- Editorial hero reveal ---------------------------------------------- */
+/* Each headline line sits in an overflow-hidden block and slides up from under
+   it, which reads as a mask wipe rather than a fade. */
+@keyframes ed-line-rise {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ed-soft-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Images wipe open from the bottom while settling out of a slight overscale. */
+@keyframes ed-frame-in {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: scale(1.14);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}
+
+.ed-line {
+  animation: ed-line-rise 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ed-soft {
+  animation: ed-soft-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.ed-frame {
+  animation: ed-frame-in 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* The parent hero holds a black overlay for ~2.8s on load, so the reveal is
+   staggered to play through it rather than finish behind it. */
+.ed-d1 { animation-delay: 0.25s; }
+.ed-d2 { animation-delay: 0.38s; }
+.ed-d3 { animation-delay: 0.55s; }
+.ed-d4 { animation-delay: 0.68s; }
+.ed-d5 { animation-delay: 0.8s; }
+.ed-d6 { animation-delay: 0.95s; }
+
+/* Timer rule under the active work row. scaleX rather than width so it stays on
+   the compositor. */
+@keyframes ed-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* One-time attention sweep on the primary CTA. Brand orange passes across the
+   button shortly after load so the hover affordance is demonstrated once, then
+   parks off the right edge — hover takes over from there in its own colour. */
+@keyframes ed-sweep-once {
+  0%,
+  12% {
+    transform: translateX(-100%);
+  }
+  46%,
+  58% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.ed-sweep-once {
+  animation: ed-sweep-once 1.9s cubic-bezier(0.22, 1, 0.36, 1) 1.5s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ed-line,
+  .ed-soft,
+  .ed-frame,
+  .ed-sweep-once {
+    animation: none;
+  }
 }
 
 .liquid-glass {

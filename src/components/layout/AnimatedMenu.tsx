@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { User2 } from "lucide-react";
 import Navbar from "./Navbar";
 import { NavbarImagePath } from "@/constants/imagePath";
@@ -29,8 +29,13 @@ const INITIAL_IMAGE = links[0].img;
 
 type NavImage = (typeof links)[number]["img"];
 
-// FIX 1: Collect all unique image paths so we can preload them all on mount
 const ALL_IMAGES = Array.from(new Set(links.map((l) => l.img)));
+
+// Module scope so add/removeEventListener always see the same function identity.
+const preventScroll = (event: Event) => event.preventDefault();
+
+const OPEN_DURATION = 0.9;
+const CLOSE_DURATION = 0.7;
 
 type AnimatedMenuProps = {
   children: React.ReactNode;
@@ -48,21 +53,31 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
   const closeTextRef = useRef<HTMLParagraphElement>(null);
   const previewRef = useRef<HTMLDivElement>(null);
 
-  const bgMainRef = useRef<HTMLDivElement>(null);
-  const bgNextRef = useRef<HTMLDivElement>(null);
-
-  // FIX 2: Keep refs to every stacked preview <img> so we can GSAP-crossfade without
-  //         remounting (the old `key={previewImg}` caused a full unmount/remount + network
-  //         request on every hover).
+  // Stacked <Image> layers for both the full-bleed backdrop and the side preview.
+  // Everything lives in the DOM from the start and we only tween opacity, so a
+  // hover never triggers a mount or a network request.
+  const bgImgRefs = useRef<Record<string, HTMLImageElement | null>>({});
   const previewImgRefs = useRef<Record<string, HTMLImageElement | null>>({});
 
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
-  const currentBgRef = useRef<NavImage>(INITIAL_IMAGE);
-  const currentPreviewRef = useRef<NavImage>(INITIAL_IMAGE);
+  const currentImageRef = useRef<NavImage>(INITIAL_IMAGE);
   const isOpenRef = useRef(false);
   const isAnimatingRef = useRef(false);
 
   const [isOpen, setIsOpen] = useState(false);
+  // The preview column is desktop-only; keeping it out of the mobile tree avoids
+  // eagerly downloading a second copy of all six images on phones.
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 768px)");
+    const sync = () => setIsDesktop(query.matches);
+
+    sync();
+    query.addEventListener("change", sync);
+
+    return () => query.removeEventListener("change", sync);
+  }, []);
 
   const setMenuOpen = (value: boolean) => {
     isOpenRef.current = value;
@@ -73,6 +88,18 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
     isAnimatingRef.current = value;
   };
 
+  // Block page scrolling for the whole open..close window without touching body
+  // overflow, which would shift the layout and disturb the pinned hero.
+  const setScrollLocked = (locked: boolean) => {
+    window.removeEventListener("wheel", preventScroll);
+    window.removeEventListener("touchmove", preventScroll);
+
+    if (locked) {
+      window.addEventListener("wheel", preventScroll, { passive: false });
+      window.addEventListener("touchmove", preventScroll, { passive: false });
+    }
+  };
+
   const killCurrentTimeline = () => {
     if (timelineRef.current) {
       timelineRef.current.kill();
@@ -80,56 +107,111 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
     }
   };
 
-  // FIX 3: animatePreviewChange crossfades stacked images instead of remounting.
-  //         All images are already in the DOM (opacity 0 initially), so there is
-  //         zero network work on hover  only a compositor-layer opacity tween.
-  const animatePreviewChange = (img: NavImage) => {
-    if (currentPreviewRef.current === img) return;
+  const q = (selector: string) =>
+    gsap.utils.toArray<HTMLElement>(selector, rootRef.current);
 
-    const outImg = previewImgRefs.current[currentPreviewRef.current];
-    const inImg = previewImgRefs.current[img];
+  // gsap warns on the console for a null target or an empty selector result.
+  // Both are expected here: the preview column only exists on desktop, and the
+  // scoped queries come back empty once rootRef is unmounted mid route change.
+  const setIfPresent = (
+    target: Element | Element[] | null,
+    vars: gsap.TweenVars,
+  ) => {
+    if (!target || (Array.isArray(target) && target.length === 0)) return;
+    gsap.set(target, vars);
+  };
+
+  // will-change is only useful while something is actually moving. Leaving it on
+  // the page wrapper permanently keeps a full-viewport GPU layer alive and makes
+  // ordinary scrolling janky.
+  const setWillChange = (value: string) => {
+    if (containerRef.current) {
+      containerRef.current.style.willChange = value;
+    }
+    if (overlayRef.current) {
+      overlayRef.current.style.willChange = value ? "clip-path" : "";
+    }
+  };
+
+  // Rotating + translating the page wrapper pulls its corners inside the viewport,
+  // and the root's light gradient shows through the gap as a white wedge before the
+  // overlay's clip-path sweeps over it. Swap the root to the menu's own base colour
+  // for the duration so anything revealed reads as part of the menu.
+  const setRootBackdrop = (active: boolean) => {
+    if (!rootRef.current) return;
+    rootRef.current.style.backgroundImage = active ? "none" : "";
+    rootRef.current.style.backgroundColor = active ? "#05070d" : "";
+  };
+
+  // While the menu is open the page behind it is fully covered, so let it stop
+  // painting entirely — that also parks the home page's pinned ScrollTrigger.
+  const setPageHidden = (hidden: boolean) => {
+    if (!containerRef.current) return;
+    containerRef.current.style.visibility = hidden ? "hidden" : "";
+    containerRef.current.style.pointerEvents = hidden ? "none" : "";
+  };
+
+  const crossfade = (
+    refs: React.RefObject<Record<string, HTMLImageElement | null>>,
+    from: NavImage,
+    to: NavImage,
+  ) => {
+    const outImg = refs.current?.[from];
+    const inImg = refs.current?.[to];
     if (!inImg) return;
 
-    currentPreviewRef.current = img;
-
-    gsap.killTweensOf([outImg, inImg]);
-    gsap.to(outImg, { opacity: 0, duration: 0.45, ease: "power2.out" });
+    gsap.killTweensOf([outImg, inImg].filter(Boolean));
+    if (outImg) {
+      gsap.to(outImg, { opacity: 0, duration: 0.4, ease: "power2.out" });
+    }
     gsap.fromTo(
       inImg,
-      { opacity: 0, scale: 0.97 },
-      { opacity: 1, scale: 1, duration: 0.55, ease: "power3.out" },
+      { opacity: 0, scale: 1.04 },
+      { opacity: 1, scale: 1, duration: 0.5, ease: "power3.out" },
     );
   };
 
+  const animateImageChange = (img: NavImage) => {
+    const from = currentImageRef.current;
+    if (from === img) return;
+
+    currentImageRef.current = img;
+
+    crossfade(bgImgRefs, from, img);
+    crossfade(previewImgRefs, from, img);
+  };
+
   const resetMenuVisuals = () => {
-    // Reset stacked preview images  only the initial one is visible
-    ALL_IMAGES.forEach((src) => {
-      const el = previewImgRefs.current[src];
-      if (el) {
-        gsap.set(el, { opacity: src === INITIAL_IMAGE ? 1 : 0, scale: 1 });
-      }
+    [bgImgRefs, previewImgRefs].forEach((refs) => {
+      ALL_IMAGES.forEach((src) => {
+        const el = refs.current?.[src];
+        if (el) {
+          gsap.killTweensOf(el);
+          gsap.set(el, { opacity: src === INITIAL_IMAGE ? 1 : 0, scale: 1 });
+        }
+      });
     });
-    currentPreviewRef.current = INITIAL_IMAGE;
+    currentImageRef.current = INITIAL_IMAGE;
 
-    currentBgRef.current = INITIAL_IMAGE;
+    // clearProps (not rotation:0/scale:1) — leaving any transform on the wrapper
+    // would make it the containing block for position:fixed children and break the
+    // home page's pinned ScrollTrigger.
+    setIfPresent(containerRef.current, { clearProps: "all" });
+    setIfPresent(previewRef.current, { scale: 1, rotate: 0 });
 
-    gsap.set(containerRef.current, { clearProps: "all" });
-    gsap.set(bgMainRef.current, {
-      backgroundImage: `url(${INITIAL_IMAGE})`,
-      opacity: 1,
-      scale: 1,
-    });
-    gsap.set(bgNextRef.current, { opacity: 0, scale: 1.08 });
-
-    gsap.set(".menu-link-item", { x: 0, y: "120%", opacity: 0.25 });
-    gsap.set(".menu-link-text", {
+    setIfPresent(q(".menu-link-item"), { x: 0, y: "120%", opacity: 0.25 });
+    setIfPresent(q(".menu-link-text"), {
       x: 0,
       color: "#ffffff",
       letterSpacing: "-0.04em",
     });
-    gsap.set(".menu-link-number", { x: 0, color: "#ffffff", opacity: 0.45 });
-    gsap.set(".menu-link-arrow", { x: 0, rotate: 0, opacity: 0 });
-    gsap.set(".menu-footer-item", { y: 20, opacity: 0 });
+    setIfPresent(q(".menu-link-number"), {
+      x: 0,
+      color: "#ffffff",
+      opacity: 0.45,
+    });
+    setIfPresent(q(".menu-link-arrow"), { x: 0, rotate: 0, opacity: 0 });
+    setIfPresent(q(".menu-footer-item"), { y: 20, opacity: 0 });
   };
 
   useGSAP(
@@ -155,13 +237,12 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
 
       return () => {
         killCurrentTimeline();
-        // FIX 4: Kill specific refs instead of the entire DOM ("*" scans every element)
+        setScrollLocked(false);
+        setRootBackdrop(false);
         gsap.killTweensOf([
           overlayRef.current,
           contentRef.current,
           containerRef.current,
-          bgMainRef.current,
-          bgNextRef.current,
           previewRef.current,
           openTextRef.current,
           closeTextRef.current,
@@ -171,55 +252,25 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
     { scope: rootRef },
   );
 
-  const animateBackgroundChange = (img: any) => {
-    if (!bgMainRef.current || !bgNextRef.current) return;
-    if (currentBgRef.current === img) return;
-
-    currentBgRef.current = img;
-
-    gsap.killTweensOf([bgMainRef.current, bgNextRef.current]);
-
-    gsap.set(bgNextRef.current, {
-      backgroundImage: `url(${img})`,
-      opacity: 0,
-      scale: 1.08,
-    });
-
-    gsap
-      .timeline()
-      .to(bgNextRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.75,
-        ease: "power3.out",
-      })
-      .set(bgMainRef.current, {
-        backgroundImage: `url(${img})`,
-        opacity: 1,
-        scale: 1,
-      })
-      .set(bgNextRef.current, { opacity: 0, scale: 1.08 });
-
-    gsap.to(bgMainRef.current, {
-      scale: 1.03,
-      duration: 0.75,
-      ease: "power3.out",
-    });
-  };
 
   const openMenu = () => {
     if (isAnimatingRef.current || isOpenRef.current) return;
 
     killCurrentTimeline();
     setAnimating(true);
+    setWillChange("transform");
+    setScrollLocked(true);
+    setRootBackdrop(true);
 
     const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
     const tl = gsap.timeline({
-      defaults: { ease: "power4.inOut" },
+      defaults: { ease: "power3.inOut" },
       onComplete: () => {
         setMenuOpen(true);
         setAnimating(false);
+        setWillChange("");
+        setPageHidden(true);
         timelineRef.current = null;
       },
     });
@@ -229,7 +280,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
       overlayRef.current,
       {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 175%, 0% 100%)",
-        duration: 1.15,
+        duration: OPEN_DURATION,
       },
       0,
     )
@@ -239,8 +290,8 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
           rotation: isMobile ? 0 : 8,
           x: isMobile ? 0 : 280,
           y: isMobile ? 0 : 420,
-          scale: isMobile ? 1 : 1.35,
-          duration: 1.15,
+          scale: isMobile ? 1 : 1.2,
+          duration: OPEN_DURATION,
         },
         0,
       )
@@ -252,7 +303,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
           y: 0,
           scale: 1,
           opacity: 1,
-          duration: 1.15,
+          duration: OPEN_DURATION,
         },
         0,
       )
@@ -263,10 +314,10 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
           y: -10,
           rotation: -5,
           opacity: 0,
-          duration: 0.45,
+          duration: 0.3,
           ease: "power2.out",
         },
-        0.2,
+        0.1,
       )
       .to(
         closeTextRef.current,
@@ -275,31 +326,31 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
           y: 0,
           rotation: 0,
           opacity: 1,
-          duration: 0.45,
+          duration: 0.3,
           ease: "power2.out",
         },
-        0.38,
+        0.26,
       )
       .to(
-        ".menu-link-item",
+        q(".menu-link-item"),
         {
           y: "0%",
           opacity: 1,
-          duration: 0.9,
-          stagger: 0.08,
+          duration: 0.7,
+          stagger: 0.06,
           ease: "power3.out",
         },
-        0.65,
+        0.42,
       )
       .to(
-        ".menu-footer-item",
+        q(".menu-footer-item"),
         {
           y: 0,
           opacity: 1,
-          duration: 0.6,
+          duration: 0.5,
           ease: "power3.out",
         },
-        0.95,
+        0.66,
       );
   };
 
@@ -308,14 +359,18 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
 
     killCurrentTimeline();
     setAnimating(true);
+    setPageHidden(false);
+    setWillChange("transform");
 
     const tl = gsap.timeline({
-      defaults: { ease: "power4.inOut" },
+      defaults: { ease: "power3.inOut" },
       onComplete: () => {
         setMenuOpen(false);
         setAnimating(false);
+        setWillChange("");
+        setScrollLocked(false);
         resetMenuVisuals();
-        gsap.set(containerRef.current, { clearProps: "all" });
+        setRootBackdrop(false);
         timelineRef.current = null;
         onComplete?.();
       },
@@ -329,7 +384,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
         x: 0,
         y: 0,
         scale: 1,
-        duration: 1.05,
+        duration: CLOSE_DURATION,
       },
       0,
     )
@@ -337,7 +392,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
         overlayRef.current,
         {
           clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-          duration: 1.05,
+          duration: CLOSE_DURATION,
         },
         0,
       )
@@ -349,27 +404,27 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
           y: -100,
           scale: 1.35,
           opacity: 0.25,
-          duration: 1.05,
+          duration: CLOSE_DURATION,
         },
         0,
       )
       .to(
-        ".menu-link-item",
+        q(".menu-link-item"),
         {
           y: "120%",
           opacity: 0.25,
-          duration: 0.65,
-          stagger: { each: 0.04, from: "end" },
+          duration: 0.5,
+          stagger: { each: 0.03, from: "end" },
           ease: "power3.inOut",
         },
         0,
       )
       .to(
-        ".menu-footer-item",
+        q(".menu-footer-item"),
         {
           y: 20,
           opacity: 0,
-          duration: 0.45,
+          duration: 0.35,
           ease: "power3.inOut",
         },
         0,
@@ -381,10 +436,10 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
           y: 10,
           rotation: 5,
           opacity: 0,
-          duration: 0.45,
+          duration: 0.3,
           ease: "power2.out",
         },
-        0.1,
+        0.05,
       )
       .to(
         openTextRef.current,
@@ -393,10 +448,10 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
           y: 0,
           rotation: 0,
           opacity: 1,
-          duration: 0.45,
+          duration: 0.3,
           ease: "power2.out",
         },
-        0.28,
+        0.2,
       );
   };
 
@@ -411,12 +466,11 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
 
   const handleMenuHover = (
     event: React.MouseEvent<HTMLAnchorElement>,
-    img: any,
+    img: NavImage,
   ) => {
     if (!isOpenRef.current || isAnimatingRef.current) return;
 
-    animateBackgroundChange(img);
-    animatePreviewChange(img); // ← no more key prop / remount
+    animateImageChange(img);
 
     const item = event.currentTarget;
     const number = item.querySelector(".menu-link-number");
@@ -447,11 +501,13 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
       ease: "power3.out",
     });
 
-    gsap.fromTo(
-      previewRef.current,
-      { scale: 0.96, rotate: -2 },
-      { scale: 1, rotate: 0, duration: 0.55, ease: "power3.out" },
-    );
+    if (previewRef.current) {
+      gsap.fromTo(
+        previewRef.current,
+        { scale: 0.98, rotate: -1 },
+        { scale: 1, rotate: 0, duration: 0.5, ease: "power3.out" },
+      );
+    }
   };
 
   const handleMenuLeave = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -518,7 +574,6 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
       <Navbar
         isOpen={isOpen}
         handleToggleMenu={handleToggleMenu}
-        isAnimatingRef={isAnimatingRef}
         isOpenRef={isOpenRef}
         openTextRef={openTextRef}
         closeTextRef={closeTextRef}
@@ -527,66 +582,83 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
 
       <div
         ref={overlayRef}
-        className="fixed inset-0 z-40 h-[100svh] w-screen overflow-hidden bg-white"
-        // FIX 5: promote overlay to its own GPU compositor layer so clip-path
-        //         animation doesn't repaint the whole page
-        style={{ willChange: "clip-path", clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" }}
+        // A dark base colour means the sliver revealed before the artwork paints
+        // reads as part of the menu instead of a white flash.
+        className="fixed inset-0 z-40 h-[100svh] w-screen overflow-hidden bg-[#05070d]"
+        style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" }}
       >
-        <div
-          ref={bgMainRef}
-          className="absolute inset-0 bg-cover bg-center opacity-100"
-          style={{
-            backgroundImage: `url(${INITIAL_IMAGE})`,
-            willChange: "transform, opacity",
-          }}
-        />
-        <div
-          ref={bgNextRef}
-          className="absolute inset-0 bg-cover bg-center opacity-0"
-          style={{ willChange: "transform, opacity" }}
-        />
+        {/* Backdrop artwork goes through next/image so it is optimised, cached and
+            eagerly fetched. The old CSS background-image pulled the raw 300-400KB
+            JPEGs on first open, which is what showed up as a white screen. */}
+        <div className="absolute inset-0">
+          {ALL_IMAGES.map((src) => (
+            <Image
+              key={src}
+              src={src}
+              alt=""
+              aria-hidden
+              fill
+              sizes="100vw"
+              loading="eager"
+              // The first frame of the menu uses INITIAL_IMAGE, so that one takes a
+              // normal queue slot; the rest stay low so they never compete with the
+              // hero on initial page load.
+              fetchPriority={src === INITIAL_IMAGE ? "auto" : "low"}
+              className="object-cover"
+              ref={(el) => {
+                bgImgRefs.current[src] = el;
+              }}
+              style={{ opacity: src === INITIAL_IMAGE ? 1 : 0 }}
+            />
+          ))}
+        </div>
 
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+        {/* Plain alpha scrim instead of backdrop-blur: a backdrop-filter over the
+            whole viewport has to re-sample the page on every frame of the
+            clip-path animation, which was the bulk of the jank. */}
+        <div className="absolute inset-0 bg-black/55" />
 
         <div className="pointer-events-none absolute left-10 top-28 h-44 w-44 rounded-full bg-[#007aff]/15 blur-3xl" />
         <div className="pointer-events-none absolute bottom-10 right-10 h-56 w-56 rounded-full bg-[#fda109]/20 blur-3xl" />
-        <div className="pointer-events-none absolute right-1/3 top-1/4 h-32 w-32 rounded-full bg-cyan-200/20 blur-3xl" />
 
         <div
           ref={contentRef}
           className="relative flex h-full w-full origin-bottom-left items-center justify-center opacity-25"
         >
           <div className="flex w-full gap-10 px-6 py-6 md:p-10">
-            <div className="hidden flex-[3] items-center justify-center md:flex">
-              {/* FIX 2: All preview images are stacked here; we GSAP-fade between them.
-                         No `key` prop → no remount → no network re-fetch on hover. */}
-              <div
-                ref={previewRef}
-                className="relative h-[68vh] w-[48%] overflow-hidden rounded-[2rem] border border-[#007aff]/10 bg-white shadow-2xl shadow-sky-200/40"
-              >
-                {ALL_IMAGES.map((src, i) => (
-                  <Image
-                    key={src}
-                    src={src}
-                    alt="Preview"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                    // FIX 1: eagerly preload every nav image so they're ready on first hover
-                    priority={i === 0}
-                    ref={(el) => {
-                      previewImgRefs.current[src] = el;
-                    }}
-                    style={{
-                      opacity: src === INITIAL_IMAGE ? 1 : 0,
-                      // allow opacity to be GPU-composited
-                      willChange: "opacity, transform",
-                    }}
-                  />
-                ))}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#007aff]/25 via-transparent to-transparent" />
+            {isDesktop && (
+              <div className="hidden flex-[3] items-center justify-center md:flex">
+                <div
+                  ref={previewRef}
+                  className="relative h-[68vh] w-[48%] overflow-hidden rounded-[2rem] border border-[#007aff]/10 bg-[#05070d] shadow-2xl shadow-sky-200/40"
+                >
+                  {ALL_IMAGES.map((src) => (
+                    <Image
+                      key={src}
+                      src={src}
+                      alt=""
+                      aria-hidden
+                      fill
+                      // Deliberately the same `sizes` as the backdrop. next/image
+                      // logs a dev-only warning that this box is not full-width,
+                      // but matching it makes both stacks resolve to the same
+                      // optimised URL, so each image is fetched once instead of
+                      // twice. The sources are only 1280px wide, so the "too
+                      // large" variant is the 1280px one either way.
+                      sizes="100vw"
+                      loading="eager"
+                      fetchPriority="low"
+                      className="object-cover"
+                      ref={(el) => {
+                        previewImgRefs.current[src] = el;
+                      }}
+                      style={{ opacity: src === INITIAL_IMAGE ? 1 : 0 }}
+                    />
+                  ))}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#007aff]/25 via-transparent to-transparent" />
+                </div>
               </div>
-            </div>
+            )}
 
             <div className="flex flex-[2] flex-col justify-center gap-4 py-4 md:gap-10 md:py-10">
               <div className="flex flex-col gap-0.5 overflow-hidden">
@@ -641,10 +713,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
         </div>
       </div>
 
-      {/* FIX 5: will-change on the page wrapper so rotation+scale goes to a GPU layer */}
-      <div ref={containerRef} style={{ willChange: "transform" }}>
-        {children}
-      </div>
+      <div ref={containerRef}>{children}</div>
     </div>
   );
 }

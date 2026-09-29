@@ -14,10 +14,12 @@ const HomePage = () => {
       }}
     >
       <AnimatedHero />
-      <WhatWeDo />
+      <TrustBar />
+     
       <Testimonials/>
       <FeaturedWork />
-      <TrustBar />
+       <WhatWeDo />
+      
     </div>
   );
 };

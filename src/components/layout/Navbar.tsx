@@ -6,7 +6,6 @@ import Link from "next/link";
 const Navbar = ({
   isOpen,
   handleToggleMenu,
-  isAnimatingRef,
   isOpenRef,
   openTextRef,
   closeTextRef,
@@ -14,7 +13,6 @@ const Navbar = ({
 }: {
   isOpen: boolean;
   handleToggleMenu: () => void;
-  isAnimatingRef: React.MutableRefObject<boolean>;
   isOpenRef: React.MutableRefObject<boolean>;
   openTextRef: React.MutableRefObject<HTMLParagraphElement | null>;
   closeTextRef: React.MutableRefObject<HTMLParagraphElement | null>;
@@ -52,9 +50,8 @@ const Navbar = ({
 
       <button
         onClick={handleToggleMenu}
-        // eslint-disable-next-line react-hooks/refs
-        disabled={isAnimatingRef.current}
-        className="liquid-glass relative z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full disabled:pointer-events-none disabled:opacity-80"
+        type="button"
+        className="liquid-glass relative z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full"
         aria-label={isOpen ? "Close menu" : "Open menu"}
         aria-expanded={isOpen}
       >

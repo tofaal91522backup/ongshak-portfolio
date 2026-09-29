@@ -59,15 +59,6 @@ export default function AnimatedHero() {
         },
       });
 
-      // Scroll indicator bounce
-      const bounceTimeline = gsap.timeline({ repeat: -1, yoyo: true });
-      bounceTimeline.to(".scroll-indicator", {
-        y: 20,
-        opacity: 0.6,
-        duration: 0.8,
-        ease: "power1.inOut",
-      });
-
       const mm = gsap.matchMedia();
 
       mm.add(
@@ -97,11 +88,16 @@ export default function AnimatedHero() {
             defaults: { force3D: true },
           });
 
-          tl.set(".hero-main-container", { scale: 1.25 });
+          // The resting scale must stay 1. The intro gsap.from() above animates
+          // to the element's natural scale, so anything else here means the hero
+          // renders at 1 on load and then snaps to the zoomed value on the first
+          // scroll — which pushed the headline up under the fixed navbar.
+          tl.set(".hero-main-container", { scale: 1 });
 
-          tl.to(".hero-main-container", { scale: 1, duration: 1 });
-
-          tl.to(".hero-main-logo", { opacity: 0, duration: 0.5 }, "<");
+          // Scroll motion has to go up, never down: below 1 the hero's edges pull
+          // away from the viewport and the page background shows around it as a
+          // box. The slight push-in happens while the hero is fading out anyway.
+          tl.to(".hero-main-container", { scale: 1.05, duration: 1 });
 
           tl.to(".hero-main-image", { opacity: 0, duration: 0.9 }, "<+=0.5");
 
@@ -166,7 +162,7 @@ export default function AnimatedHero() {
           tl.to(".hero-2-container", { opacity: 1, duration: 3 }, "<+=0.2");
 
           tl.fromTo(
-            ".hero-2-container",
+            ".hero-2-heading",
             {
               backgroundImage: logoGradientStart,
             },
@@ -260,13 +256,17 @@ export default function AnimatedHero() {
         style={{
           opacity: 0,
           visibility: "hidden",
-          backgroundImage: logoGradientStart,
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
         }}
       >
         {/* Heading */}
-        <h3 className="font-bold text-3xl lg:text-4xl text-center leading-tight">
+        <h3
+          className="hero-2-heading font-bold text-3xl lg:text-4xl text-center leading-tight"
+          style={{
+            backgroundImage: logoGradientStart,
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
           Tech Stack That Powers Modern Products.
         </h3>
 
@@ -379,7 +379,7 @@ export default function AnimatedHero() {
           </Link>
           <Link href="/contact">
             <button
-              className="rounded-full border md:px-6 px-4 md:py-3 py-2.5 font-semibold backdrop-blur-md transition hover:scale-[1.02]"
+              className="rounded-full border md:px-6 px-4 md:py-3 py-2.5 font-semibold transition hover:scale-[1.02]"
               style={{
                 borderColor: "#32c2d88c",
                 background: "rgba(19, 93, 201, 0.12)",
