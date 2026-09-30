@@ -20,7 +20,7 @@ const reviews = [
     id: 1,
     clientName: "Mahin Abrar Rahman",
     clientReview:
-      "I had a wonderful time with Ongshak. They were collaborative, understanding and professional. The website that they made for me was fantastic and served my purpose perfectly.",
+      "I had a wonderful time with ongshak. They were collaborative, understanding and professional. The website that they made for me was fantastic and served my purpose perfectly.",
     clientReview2:
       "Their team listened carefully, understood the goal, and delivered a polished solution that matched my expectations.",
     clientDesignation: "Director, Psycure Limited",
@@ -30,9 +30,9 @@ const reviews = [
     id: 2,
     clientName: "Syed Al-Nahiyan",
     clientReview:
-      "Truly a smart tech solution for those who want to grow together with an expert and efficient team. Ongshak is a team of highly skilled and dedicated professionals who are passionate about delivering top-notch digital products.",
+      "Truly a smart tech solution for those who want to grow together with an expert and efficient team. ongshak is a team of highly skilled and dedicated professionals who are passionate about delivering top-notch digital products.",
     clientReview2:
-      "Ongshak brings a professional mindset, clear communication, and a strong commitment to building useful digital products.",
+      "ongshak brings a professional mindset, clear communication, and a strong commitment to building useful digital products.",
     clientDesignation: "CEO, The Physics Guy",
     clientImage: "/images/nahiyan.jpg",
   },
@@ -40,9 +40,9 @@ const reviews = [
     id: 3,
     clientName: "Ashik Muntakim",
     clientReview:
-      "It has been a pleasure working with Ongshak for several of our projects. Ongshak has been a constant support for all of our Tech requirements so far with affordable solutions and great input in our tech products.",
+      "It has been a pleasure working with ongshak for several of our projects. ongshak has been a constant support for all of our Tech requirements so far with affordable solutions and great input in our tech products.",
     clientReview2:
-      "I would undoubtedly recommend Ongshak for any sort of digital and technological support. Hope to collaborate further in future.",
+      "I would undoubtedly recommend ongshak for any sort of digital and technological support. Hope to collaborate further in future.",
     clientDesignation: "Chief of Staff, Healthport Bangladesh",
     clientImage: "/images/ashik.png",
   },

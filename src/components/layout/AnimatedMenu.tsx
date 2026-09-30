@@ -205,11 +205,6 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
       color: "#ffffff",
       letterSpacing: "-0.04em",
     });
-    setIfPresent(q(".menu-link-number"), {
-      x: 0,
-      color: "#ffffff",
-      opacity: 0.45,
-    });
     setIfPresent(q(".menu-link-arrow"), { x: 0, rotate: 0, opacity: 0 });
     setIfPresent(q(".menu-footer-item"), { y: 20, opacity: 0 });
   };
@@ -251,7 +246,6 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
     },
     { scope: rootRef },
   );
-
 
   const openMenu = () => {
     if (isAnimatingRef.current || isOpenRef.current) return;
@@ -473,23 +467,15 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
     animateImageChange(img);
 
     const item = event.currentTarget;
-    const number = item.querySelector(".menu-link-number");
     const text = item.querySelector(".menu-link-text");
     const arrow = item.querySelector(".menu-link-arrow");
 
-    gsap.killTweensOf([item, number, text, arrow]);
+    gsap.killTweensOf([item, text, arrow]);
 
     gsap.to(item, { x: 18, duration: 0.4, ease: "power3.out" });
     gsap.to(text, {
       letterSpacing: "-0.08em",
       color: "#007aff",
-      duration: 0.35,
-      ease: "power3.out",
-    });
-    gsap.to(number, {
-      x: -8,
-      opacity: 1,
-      color: "#ffffff",
       duration: 0.35,
       ease: "power3.out",
     });
@@ -514,22 +500,14 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
     if (isAnimatingRef.current) return;
 
     const item = event.currentTarget;
-    const number = item.querySelector(".menu-link-number");
     const text = item.querySelector(".menu-link-text");
     const arrow = item.querySelector(".menu-link-arrow");
 
-    gsap.killTweensOf([item, number, text, arrow]);
+    gsap.killTweensOf([item, text, arrow]);
 
     gsap.to(item, { x: 0, duration: 0.4, ease: "power3.out" });
     gsap.to(text, {
       letterSpacing: "-0.04em",
-      color: "#ffffff",
-      duration: 0.35,
-      ease: "power3.out",
-    });
-    gsap.to(number, {
-      x: 0,
-      opacity: 0.45,
       color: "#ffffff",
       duration: 0.35,
       ease: "power3.out",
@@ -662,7 +640,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
 
             <div className="flex flex-[2] flex-col justify-center gap-4 py-4 md:gap-10 md:py-10">
               <div className="flex flex-col gap-0.5 overflow-hidden">
-                {links.map((item, index) => (
+                {links.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
@@ -671,9 +649,6 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
                     onMouseLeave={handleMenuLeave}
                     className="menu-link-item group flex translate-y-[120%] items-center gap-4 overflow-hidden py-1 opacity-25"
                   >
-                    <span className="menu-link-number min-w-8 text-sm font-semibold text-white opacity-45">
-                      0{index + 1}
-                    </span>
                     <span className="menu-link-text text-[2.4rem] font-light leading-none tracking-[-0.04em] text-white md:text-[4rem]">
                       {item.label}
                     </span>
@@ -696,7 +671,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
                   rel="noreferrer"
                   className="font-medium text-[#007aff] underline-offset-4 transition hover:underline"
                 >
-                  Ongshak
+                  ongshak
                 </a>
               </p>
             </div>

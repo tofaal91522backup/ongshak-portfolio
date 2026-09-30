@@ -23,9 +23,9 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Ongshak",
+  title: "ongshak",
   description:
-    "Ongshak is a digital architecture and design studio that creates innovative and immersive experiences for brands and audiences. We specialize in creating digital spaces that are both functional and beautiful, using cutting-edge technology and design principles to bring our clients' visions to life.",
+    "ongshak is a digital architecture and design studio that creates innovative and immersive experiences for brands and audiences. We specialize in creating digital spaces that are both functional and beautiful, using cutting-edge technology and design principles to bring our clients' visions to life.",
 };
 
 export default function RootLayout({

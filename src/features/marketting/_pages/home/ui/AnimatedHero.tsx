@@ -184,7 +184,7 @@ export default function AnimatedHero() {
       className="gta-container relative min-h-svh"
       style={{
         background:
-          "linear-gradient(223.17deg, rgb(28, 24, 41) 0%, rgb(27, 24, 40) 8.61%, rgb(25, 23, 36) 17.21%, rgb(22, 21, 32) 25.82%, rgb(20, 19, 28) 34.42%, rgb(18, 18, 24) 43.03%, rgb(17, 17, 23) 51.63%)",
+          "linear-gradient(223.17deg, rgb(28, 24, 41) 0%, rgb(24, 22, 35) 20%, rgb(18, 18, 25) 45%, rgb(11, 13, 18) 70%, #05070d 100%)",
       }}
     >
       {/* Overlay */}
@@ -240,7 +240,7 @@ export default function AnimatedHero() {
                 marginTop: "55%",
               }}
             >
-              Ongshak
+              ongshak
               <br />
               Since
               <br />
@@ -282,7 +282,10 @@ export default function AnimatedHero() {
             </span>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-4">
               {webTechs.map((t) => (
-                <div key={t.name} className="flex flex-col items-center gap-1.5">
+                <div
+                  key={t.name}
+                  className="flex flex-col items-center gap-1.5"
+                >
                   <Image
                     src={t.icon}
                     alt={t.name}
@@ -313,7 +316,10 @@ export default function AnimatedHero() {
             </span>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-4">
               {mobileTechs.map((t) => (
-                <div key={t.name} className="flex flex-col items-center gap-1.5">
+                <div
+                  key={t.name}
+                  className="flex flex-col items-center gap-1.5"
+                >
                   <Image
                     src={t.icon}
                     alt={t.name}
@@ -344,7 +350,10 @@ export default function AnimatedHero() {
             </span>
             <div className="flex flex-wrap justify-center gap-x-5 gap-y-4">
               {embeddedTechs.map((t) => (
-                <div key={t.name} className="flex flex-col items-center gap-1.5">
+                <div
+                  key={t.name}
+                  className="flex flex-col items-center gap-1.5"
+                >
                   <Image
                     src={t.icon}
                     alt={t.name}

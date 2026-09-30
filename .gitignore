@@ -41,3 +41,5 @@ ongshak_aws
 next-env.d.ts
 
 tsconfig.tsbuildinfo
+# claude code runtime lock (holds a pid, machine-specific)
+.claude/scheduled_tasks.lock

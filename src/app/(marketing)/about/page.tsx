@@ -2,75 +2,50 @@ import Link from "next/link";
 import {
   ArrowUpRight,
   Award,
-  Eye,
-  Factory,
-  Handshake,
-  Hammer,
+  Cpu,
+  Layers,
   Linkedin,
   Mail,
-  Mic,
-  Sparkles,
-  Target,
+  RefreshCcw,
 } from "lucide-react";
 import Image from "next/image";
-import Milestones from "@/features/marketting/_pages/about/Milestones";
+import TeamGrid from "@/features/marketting/_pages/about/TeamGrid";
 
-const milestones = [
-  { year: "2021", label: "Founded in Dhaka" },
-  { year: "2022", label: "100th project delivered" },
-  { year: "2023", label: "Drishti Technologies launched" },
-  { year: "2024", label: "threadBridge SteelGuard shipped" },
-  { year: "2025", label: "347+ projects milestone" },
-  { year: "2026", label: "Global Change Award winner" },
-];
 
-const values = [
+const offers = [
   {
-    Icon: Hammer,
-    title: "Craft Over Shortcuts",
-    body: "We don't cut corners. Every line of code, every design decision, every deployment  done right.",
+    Icon: Layers,
+    title: "Product Engineering",
+    body: "Web apps, SaaS platforms, mobile apps, MVPs and the internal systems a business actually runs on.",
   },
   {
-    Icon: Target,
-    title: "Impact Over Vanity Metrics",
-    body: "We measure success by outcomes delivered to our clients, not by the size of our team or the logos on our wall.",
+    Icon: Cpu,
+    title: "Hardware & Embedded",
+    body: "Firmware, sensors and devices on STM32, Arduino, Raspberry Pi and Jetson \u2014 shipped with the software that talks to them.",
   },
   {
-    Icon: Handshake,
-    title: "Partnership Over Transactions",
-    body: "We're not here for one-off projects. We build long-term relationships with clients who want a technology partner that grows with them.",
-  },
-  {
-    Icon: Sparkles,
-    title: "Innovation as Standard",
-    body: "AI, automation, and modern engineering aren't premium add-ons. They're how we build everything.",
+    Icon: RefreshCcw,
+    title: "AI & Automation",
+    body: "Computer vision, NLP and predictive analytics wired into real operations, not demos.",
   },
 ];
 
-const ventures = [
+const valueDelivered = [
   {
-    Icon: Factory,
-    name: "threadBridge",
-    tag: "AI-Powered Quality Control",
-    body: "Reducing material waste and building resilient supply chains for manufacturing. Our SteelGuard system deploys computer vision directly on factory floors.",
-    link: "https://threadbridge.tech/",
-    accent: "from-[#FFA605] to-[#FD7D18]",
+    label: "One team, end to end",
+    body: "Firmware, cloud and app come from the same people, so nothing is lost between vendors who blame each other.",
   },
   {
-    Icon: Eye,
-    name: "Drishti Technologies",
-    tag: "AI Assistive Technology",
-    body: "Smart Cane and AI wearables for the visually impaired. Partnered with Robi Axiata, serving 717+ users across Bangladesh.",
-    link: "https://drishti.today/",
-    accent: "from-[#32C2D8] to-[#135DC9]",
+    label: "Built to be handed over",
+    body: "Documented, tested and deployed on infrastructure your team can run \u2014 not a black box that needs us forever.",
   },
   {
-    Icon: Award,
-    name: "Khar Active",
-    tag: "On-Demand Martial Arts & Fitness",
-    body: "Connecting verified fighters with users for 1-on-1 training sessions. Defense, Discipline, Dignity.",
-    link: "https://khar.co",
-    accent: "from-[#FD7D18] to-[#135DC9]",
+    label: "Proven across industries",
+    body: "347+ products for 50+ clients in 12+ industries and 5 countries since 2021, from steel manufacturing to assistive technology.",
+  },
+  {
+    label: "Partners, not vendors",
+    body: "Most of our clients come back for their next product. We plan for the second release while building the first.",
   },
 ];
 
@@ -314,7 +289,7 @@ export default function AboutPage() {
           {/* ── Content ── */}
           <div className="relative z-10">
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#FFA605]">
-              About Ongshak
+              About ongshak
             </p>
             <h1 className="mt-6 max-w-4xl font-serif text-5xl leading-[1.05] text-white md:text-7xl">
               We build things that{" "}
@@ -349,7 +324,7 @@ export default function AboutPage() {
               Started in 2021 with a simple belief.
             </h2>
             <p>
-              Ongshak started in 2021 with a simple belief: businesses in
+              ongshak started in 2021 with a simple belief: businesses in
               Bangladesh deserve technology partners, not vendors.
             </p>
             <p>
@@ -365,7 +340,7 @@ export default function AboutPage() {
               used across multiple countries.
             </p>
             <p>
-              But we&apos;re not just a services company. Ongshak is the
+              But we&apos;re not just a services company. ongshak is the
               launchpad for three technology ventures —{" "}
               <span className="text-white">threadBridge</span>,{" "}
               <span className="text-white">Drishti Technologies</span>, and{" "}
@@ -378,8 +353,52 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Timeline */}
-        <Milestones />
+        {/* Value proposition */}
+        <section className="border-t border-white/10 py-20">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#FFA605]">
+            What We Offer
+          </p>
+          <h2 className="mt-4 max-w-3xl font-serif text-4xl text-white">
+            One team, from the circuit board to the cloud.
+          </h2>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-400">
+            Most studios stop at the screen. We take a product from the firmware
+            on the board, through the cloud that serves it, to the app in
+            someone&apos;s hand &mdash; under one roof, with one set of
+            decisions. That is why a steel manufacturer, a queue-management
+            platform and an assistive device for the visually impaired all sit
+            in the same portfolio.
+          </p>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {offers.map(({ Icon, title, body }) => (
+              <div
+                key={title}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 transition-all hover:border-[#FFA605]/40 hover:bg-white/[0.05]"
+              >
+                <div className="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-[#FFA605]/10 opacity-0 blur-2xl transition-opacity group-hover:opacity-100" />
+                <div className="relative">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-[#FFA605]">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 text-lg font-medium text-white">
+                    {title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-slate-400">{body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-2">
+            {valueDelivered.map(({ label, body }) => (
+              <div key={label} className="bg-[#05070d] p-7">
+                <p className="text-sm font-medium text-white">{label}</p>
+                <p className="mt-2 text-sm leading-7 text-slate-400">{body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {/* Leadership */}
         <section className="border-t border-white/10 py-20">
@@ -391,7 +410,7 @@ export default function AboutPage() {
           </h2>
 
           <div className="mt-14 grid gap-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdro-blur-md md:grid-cols-12 md:p-12">
-            <div className="md:col-span-4">
+            <div className="md:order-2 md:col-span-4">
               <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#FFA605]/20 via-[#FD7D18]/10 to-[#135DC9]/20">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Image
@@ -406,7 +425,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="md:col-span-8">
+            <div className="md:order-1 md:col-span-8">
               <h3 className="font-serif text-3xl text-white">Ridwan Hossain</h3>
               <p className="mt-1 text-sm uppercase tracking-[0.2em] text-[#FFA605]">
                 Managing Director
@@ -415,7 +434,7 @@ export default function AboutPage() {
               <div className="mt-6 space-y-5 text-base leading-8 text-slate-400">
                 <p>
                   Ridwan is a technology entrepreneur running three ventures
-                  from Dhaka. As Managing Director of Ongshak, he leads a team
+                  from Dhaka. As Managing Director of ongshak, he leads a team
                   that has delivered 347+ projects since 2021.
                 </p>
                 <p>
@@ -459,76 +478,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Values */}
-        <section className="border-t border-white/10 py-20">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#FFA605]">
-            Our Values
-          </p>
-          <h2 className="mt-4 font-serif text-4xl text-white">
-            What we stand on.
-          </h2>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
-            {values.map(({ Icon, title, body }) => (
-              <div
-                key={title}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 backdrp-blur-md transition-all hover:border-[#FFA605]/40 hover:bg-white/[0.05]"
-              >
-                <div className="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-[#FFA605]/10 blur-2xl opacity-0 transition-opacity group-hover:opacity-100" />
-                <div className="relative">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-gradient-to-br from-[#FFA605]/20 to-[#FD7D18]/10 text-[#FFA605]">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-6 font-serif text-2xl text-white">
-                    {title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">
-                    {body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Ventures */}
-        <section className="border-t border-white/10 py-20">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#FFA605]">
-            Sister Ventures
-          </p>
-          <h2 className="mt-4 max-w-2xl font-serif text-4xl text-white">
-            An ecosystem of products solving real problems.
-          </h2>
-
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {ventures.map(({ Icon, name, tag, body, link, accent }) => (
-              <a
-                key={name}
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-8 bacdrop-blur-md transition-all hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06]"
-              >
-                <div
-                  className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${accent} text-black shadow-lg`}
-                >
-                  <Icon className="h-6 w-6" />
-                </div>
-                <h3 className="mt-6 font-serif text-2xl text-white">{name}</h3>
-                <p className="mt-1 text-xs uppercase tracking-[0.2em] text-[#FFA605]">
-                  {tag}
-                </p>
-                <p className="mt-4 flex-1 text-sm leading-7 text-slate-400">
-                  {body}
-                </p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-white">
-                  Visit site
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
-                </span>
-              </a>
-            ))}
-          </div>
-        </section>
+        {/* Team — pulled live from the employee service */}
+        <TeamGrid />
 
         {/* CTA */}
         <section className="border-t border-white/10 py-24">

@@ -175,7 +175,7 @@ export default function MainHero() {
                 <Image
                   key={project.image}
                   src={project.image}
-                  alt={`${project.name} — built by Ongshak`}
+                  alt={`${project.name} — built by ongshak`}
                   fill
                   sizes="(max-width: 768px) 92vw, 55vw"
                   priority={i === 0}

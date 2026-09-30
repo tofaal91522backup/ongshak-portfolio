@@ -89,12 +89,6 @@ export const portfolioProjects = [
     description:
       "AI-powered travel discovery platform helping travellers explore destinations and plan experiences.",
   },
-  {
-    title: "Hanzo ERP",
-    industry: "Enterprise & ERP",
-    description:
-      "Cloud-hosted ERP for service scheduling, machine registration, rental billing, inventory, accounting, and reports.",
-  },
 ];
 
 export const industries = [

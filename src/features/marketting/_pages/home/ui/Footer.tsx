@@ -10,7 +10,7 @@ export default function Footer() {
             <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#007aff] text-lg font-black">
               O
             </div>
-            <span className="text-xl font-black">Ongshak</span>
+            <span className="text-xl font-black">ongshak</span>
           </Link>
 
           <p className="mt-5 max-w-sm leading-7 text-slate-400">
@@ -59,7 +59,7 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="mx-auto flex  container flex-col gap-3 px-4 py-6 text-sm text-slate-500 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
-          <p>© 2026 Ongshak. All rights reserved.</p>
+          <p>© 2026 ongshak. All rights reserved.</p>
           <p>Privacy Policy | Terms of Service</p>
         </div>
       </div>

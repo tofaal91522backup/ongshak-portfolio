@@ -75,6 +75,30 @@ const projects: Project[] = [
     },
   },
   {
+    name: "Steeltech Marketing Representative",
+    client: "Steeltech Industries Ltd.",
+    category: "Manufacturing",
+    tag: "Mobile App / Field Sales",
+    description:
+      "An offline-first Android app for Steeltech's marketing representatives \u2014 register fabricators, file GPS- and photo-verified visit reports, and log distributor sales from sites with no signal.",
+    image: "/images/work/steeltech-marketing-rep.png",
+    accent: "from-orange-400/25 to-slate-500/5",
+    ring: "ring-orange-400/20",
+    badgeColor: "text-orange-300 border-orange-300/30",
+    featured: true,
+    details: {
+      what: "Steeltech's marketing representatives work across the country, visiting fabricators, dealers and construction sites \u2014 often in places where mobile data drops out entirely. Visit reports travelled back by paper and messaging apps, so head office saw field activity days late, could not verify where a visit actually happened, and had no single view of which fabricators had been covered.",
+      built:
+        "A React Native app on Expo SDK 55 with an offline-first sync layer. Representatives register fabricators with photographs, file visit reports with attachments and a GPS stamp, log distributor sales, raise issue reports and work through assigned tasks. Submissions made without signal are queued to device storage and replayed on reconnect \u2014 and because the mutation handlers are re-registered when the query client is built, a queued report survives the app being closed instead of disappearing silently. GPS capture is best-effort on an eight-second timeout, so a weak fix never blocks a submission.",
+      why: "Field data now arrives as soon as a representative has signal rather than at the end of a trip, every visit carries a location and photo trail, and head office works from one live picture of fabricator coverage instead of reconciling paper.",
+      metrics: [
+        "Works fully offline \u2014 reports queue and replay",
+        "13 modules in one rep app",
+        "GPS + photo-verified visits",
+      ],
+    },
+  },
+  {
     name: "Drishti",
     client: "Drishti Technologies",
     category: "Assistive Technology",
@@ -219,7 +243,7 @@ const projects: Project[] = [
       what: "An AI-powered travel discovery platform for Thailand  from Bangkok to Chiang Mai to the southern islands.",
       built:
         "A modern, AI-integrated travel platform combining curated content with intelligent recommendations through a single, intuitive interface.",
-      why: "Demonstrates Ongshak's ability to deliver AI-integrated consumer products for international markets  not a brochure site, a working AI application.",
+      why: "Demonstrates ongshak's ability to deliver AI-integrated consumer products for international markets  not a brochure site, a working AI application.",
       metrics: ["AI recommendations", ".ai domain", "International market"],
     },
   },
@@ -248,30 +272,6 @@ const projects: Project[] = [
       ],
     },
   },
-  {
-    name: "Hanzo ERP",
-    client: "Water Purifier Service & Rental",
-    category: "Enterprise & ERP",
-    tag: "Enterprise & ERP",
-    description:
-      "Cloud-hosted ERP delivered in 4 weeks  service scheduling, inventory, double-entry accounting, and real-time KPI dashboards.",
-    image: "/images/work/hanzo.png", // 👈 add image link
-    accent: "from-violet-400/25 to-purple-500/5",
-    ring: "ring-violet-400/20",
-    badgeColor: "text-violet-300 border-violet-300/30",
-    featured: true,
-    details: {
-      what: "A comprehensive ERP for a water purifier service and rental business  managing service scheduling, machine registration, rental billing, inventory, double-entry accounting, and real-time dashboards.",
-      built:
-        "Secure, cloud-hosted ERP on Django 5 + DRF and Next.js 14. Delivered in 4 weeks across 5 modules: Service, Inventory, Accounting, Dashboards, and Security & Compliance. Dockerised on a BD data-centre VPS with staging + production.",
-      why: "Showcases end-to-end product engineering  RBAC, accounting engine, inventory, real-time dashboards, and production deployment  in just 4 weeks.",
-      metrics: [
-        "4-week delivery",
-        "5 modules shipped",
-        "RBAC + encrypted backups",
-      ],
-    },
-  },
 ];
 
 const stats = [
@@ -279,7 +279,6 @@ const stats = [
   { value: "50+", label: "Clients" },
   { value: "12+", label: "Industries" },
   { value: "5+", label: "Countries" },
-  { value: "2021", label: "Building Since" },
 ];
 
 export default function WorkPage() {

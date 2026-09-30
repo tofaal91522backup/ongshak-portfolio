@@ -196,7 +196,7 @@ export default function AIInnovation() {
         <div className="mb-12 max-w-3xl">
           <h2 className="text-3xl font-bold md:text-4xl">Innovation Lab</h2>
           <p className="mt-4 text-lg text-white/60">
-            Ongshak isn&apos;t just a services company. We build our own
+            ongshak isn&apos;t just a services company. We build our own
             products and that&apos;s what makes us better at building yours.
           </p>
         </div>

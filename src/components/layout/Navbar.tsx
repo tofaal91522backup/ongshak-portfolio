@@ -35,7 +35,7 @@ const Navbar = ({
         <span className="flex h-11 w-11 items-center justify-center overflow-hidden rounded-full">
           <Image
             src={NavbarImagePath.logo}
-            alt="Ongshak Logo"
+            alt="ongshak Logo"
             width={30}
             height={30}
             unoptimized
@@ -44,7 +44,7 @@ const Navbar = ({
         </span>
 
         <span className="text-2xl font-bold tracking-[-0.04em] text-white drop-shadow-[0_3px_12px_rgba(0,0,0,0.65)]">
-          Ongshak
+          ongshak
         </span>
       </Link>
 

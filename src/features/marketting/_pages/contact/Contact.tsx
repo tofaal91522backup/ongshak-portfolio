@@ -61,7 +61,10 @@ export default function ContactPage() {
 
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
       body: JSON.stringify(payload),
     });
 
@@ -244,7 +247,7 @@ export default function ContactPage() {
                   <MapPin className="mt-1 h-5 w-5 text-amber-400" />
                   <div>
                     <div className="text-sm text-white/50">Office</div>
-                    <div className="font-medium">Ongshak</div>
+                    <div className="font-medium">ongshak</div>
                     <div className="text-sm text-white/70">
                       113/A, Love Road, Tejgaon Industrial Area, Dhaka-1208,
                       Bangladesh
@@ -254,7 +257,7 @@ export default function ContactPage() {
 
                 <div className="mt-4 aspect-video w-full overflow-hidden rounded-lg border border-white/10">
                   <iframe
-                    title="Ongshak office map"
+                    title="ongshak office map"
                     src="https://www.google.com/maps?q=113/A+Love+Road+Tejgaon+Industrial+Area+Dhaka+1208+Bangladesh&output=embed"
                     className="h-full w-full grayscale"
                     loading="lazy"

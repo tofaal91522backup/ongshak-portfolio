@@ -47,7 +47,7 @@ export default function Footer() {
           <div className="md:col-span-5">
             <Link href="/" className="inline-block">
               <span className="font-serif text-3xl font-semibold text-white">
-                Ongshak
+                ongshak
               </span>
             </Link>
             <p className="mt-5 max-w-md text-sm leading-7 text-slate-400">
@@ -131,7 +131,9 @@ export default function Footer() {
                   <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-[#135DC9]">
                     <MapPin className="h-4 w-4" />
                   </span>
-                  <span className="leading-6">113/A, Love Road, Tejgaon Industrial Area, Dhaka-1208</span>
+                  <span className="leading-6">
+                    113/A, Love Road, Tejgaon Industrial Area, Dhaka-1208
+                  </span>
                 </a>
               </li>
             </ul>
@@ -140,7 +142,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 text-xs text-slate-500 md:flex-row">
-          <p>© 2026 Ongshak. All rights reserved.</p>
+          <p>© 2026 ongshak. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <a href="#privacy" className="hover:text-white">
               Privacy Policy
@@ -155,7 +157,7 @@ export default function Footer() {
       {/* Giant brand wordmark */}
       <div className="pointer-events-none select-none overflow-hidden absolute inset-0 flex items-center justify-center">
         <p className="bg-gradient-to-b from-white/[0.06] to-transparent bg-clip-text text-center font-serif text-[20vw] font-bold leading-none text-transparent">
-          Ongshak
+          ongshak
         </p>
       </div>
     </footer>
