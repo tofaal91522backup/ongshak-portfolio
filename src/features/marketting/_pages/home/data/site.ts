@@ -1,7 +1,7 @@
 export const navItems = [
   { label: "Services", href: "/services" },
   { label: "Work", href: "/work" },
-  { label: "AI & Innovation", href: "/ai-innovation" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Industries", href: "/industries" },
   { label: "About", href: "/about" },
 ];
@@ -33,28 +33,28 @@ export const services = [
 
 export const featuredProjects = [
   {
-    img: "/images/feature-work/qc.jpg",
-    title: "threadBridge SteelGuard",
+    img: "/images/work/khar.png",
+    title: "Khar",
+    industry: "Sports & Entertainment",
+    description:
+      "A bold digital platform for Bangladesh's combat sports scene — fight nights, athlete stories, podcasts, and ticketing in one experience.",
+    metric: "Live ticketing for fight nights",
+  },
+  {
+    img: "/images/work/steeltech-marketing-rep.png",
+    title: "Steeltech Marketing Representative",
     industry: "Manufacturing",
     description:
-      "AI-powered quality control for steel pipe production. Reduced defect leakage and eliminated manual QC lag.",
-    metric: "5,200+ defective pipes caught",
+      "An offline-first Android app for Steeltech's field reps — GPS- and photo-verified visit reports, fabricator registration, and distributor sales from sites with no signal.",
+    metric: "Works fully offline — reports queue and replay",
   },
   {
-    img: "/images/feature-work/cane.jpg",
-    title: "Drishti Smart Cane",
-    industry: "Assistive Technology",
+    img: "/images/work/build-bd.png",
+    title: "Build Bangladesh",
+    industry: "Social Impact",
     description:
-      "AI-enabled assistive devices for visually impaired users across Bangladesh.",
-    metric: "717+ active users",
-  },
-  {
-    img: "/images/feature-work/queue.jpg",
-    title: "QueueSmart",
-    industry: "SaaS / Fintech",
-    description:
-      "QR-based queue management replacing expensive hardware token machines.",
-    metric: "Zero hardware dependency",
+      "A digital platform powering Bangladesh's RMG innovation ecosystem — programmes, partnerships, and impact for a global audience of funders and startups.",
+    metric: "Backed by H&M Foundation & The Asia Foundation",
   },
 ];
 
@@ -111,5 +111,5 @@ export const footerLinks = {
     "QA",
     "Consulting",
   ],
-  Company: ["About", "Work", "Industries", "AI & Innovation", "Contact"],
+  Company: ["About", "Work", "Case Studies", "Industries", "Contact"],
 };

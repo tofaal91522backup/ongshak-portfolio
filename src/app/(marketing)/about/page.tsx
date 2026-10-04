@@ -335,17 +335,17 @@ export default function AboutPage() {
             <p>
               Five years and 347+ projects later, we&apos;ve worked with
               startups, enterprises, NGOs, and government agencies across 12+
-              industries. We&apos;ve built AI systems for factory floors,
-              assistive devices for the visually impaired, and digital products
-              used across multiple countries.
+              industries. We&apos;ve built industrial brand platforms,
+              offline-first field apps, investor platforms, and digital
+              products used across multiple countries.
             </p>
             <p>
-              But we&apos;re not just a services company. ongshak is the
-              launchpad for three technology ventures —{" "}
+              We also partner with ambitious ventures — building the digital
+              presence for{" "}
               <span className="text-white">threadBridge</span>,{" "}
               <span className="text-white">Drishti Technologies</span>, and{" "}
-              <span className="text-white">Khar Active</span> each solving real
-              problems with technology.
+              <span className="text-white">Khar</span> so they can tell their
+              story and reach the people they serve.
             </p>
             <p className="text-white">
               We build things that matter. That&apos;s the job.
@@ -365,9 +365,9 @@ export default function AboutPage() {
             Most studios stop at the screen. We take a product from the firmware
             on the board, through the cloud that serves it, to the app in
             someone&apos;s hand &mdash; under one roof, with one set of
-            decisions. That is why a steel manufacturer, a queue-management
-            platform and an assistive device for the visually impaired all sit
-            in the same portfolio.
+            decisions. That is why a steel manufacturer, a combat sports
+            platform and an assistive technology venture all sit in the same
+            portfolio.
           </p>
 
           <div className="mt-14 grid gap-6 md:grid-cols-3">

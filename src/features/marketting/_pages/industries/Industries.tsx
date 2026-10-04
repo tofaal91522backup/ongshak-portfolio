@@ -15,17 +15,17 @@ const industries = [
     icon: Factory,
     name: "Manufacturing & Industrial",
     description:
-      "AI-powered quality control, predictive maintenance, and supply chain optimisation for factories and production lines.",
-    work: "SteelGuard by threadBridge (steel pipe QC), SteelTech Industries digital presence",
-    cta: "Building for manufacturing? Let's talk AI-powered QC.",
+      "Industrial brand websites, field-sales apps, and workflow automation for factories and production lines.",
+    work: "Steeltech Industries website, Steeltech Marketing Representative field-sales app",
+    cta: "Building for manufacturing? Let's talk.",
   },
   {
     icon: HeartPulse,
     name: "Assistive Technology & Health",
     description:
-      "Smart devices and software for healthcare providers, patients, and people with disabilities.",
-    work: "Drishti Smart Cane, Drishti Smart Glasses, partnership with Robi Axiata and Ispahani Islamia Eye Institute",
-    cta: "Building assistive or health tech? We've been there.",
+      "Websites, apps, and platforms for healthcare providers, assistive technology ventures, and people with disabilities.",
+    work: "Drishti Technologies website",
+    cta: "Building assistive or health tech? Let's talk.",
   },
   {
     icon: GraduationCap,
@@ -56,7 +56,7 @@ const industries = [
     name: "NGO & Social Impact",
     description:
       "Technology for organisations driving social change  beneficiary tracking, impact measurement, and community platforms.",
-    work: "Drishti's District Ambassador Program, social impact angle of Khar Active",
+    work: "Build Bangladesh, Needle Innovation Challenge, PoP Water",
     cta: "Driving impact with technology? We share that mission.",
   },
 ];

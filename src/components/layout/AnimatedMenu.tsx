@@ -18,8 +18,8 @@ const links = [
   { label: "Services", href: "/services", img: NavbarImagePath.menu3 },
   { label: "Work", href: "/work", img: NavbarImagePath.menu4 },
   {
-    label: "AI Innovation",
-    href: "/ai-innovation",
+    label: "Case Studies",
+    href: "/case-studies",
     img: NavbarImagePath.menu5,
   },
   { label: "Industries", href: "/industries", img: NavbarImagePath.menu6 },
@@ -547,7 +547,7 @@ export default function AnimatedMenu({ children }: AnimatedMenuProps) {
   return (
     <div
       ref={rootRef}
-      className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#f6fbff_45%,#eef7ff_100%)]"
+      className="relative min-h-screen overflow-clip bg-[linear-gradient(180deg,#ffffff_0%,#f6fbff_45%,#eef7ff_100%)]"
     >
       <Navbar
         isOpen={isOpen}

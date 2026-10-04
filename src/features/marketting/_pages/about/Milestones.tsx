@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from "react";
 const milestones = [
   { year: "2021", label: "Founded in Dhaka" },
   { year: "2022", label: "100th project delivered" },
-  { year: "2023", label: "Drishti Technologies launched" },
-  { year: "2024", label: "threadBridge SteelGuard shipped" },
+  { year: "2023", label: "Drishti Technologies website launched" },
+  { year: "2024", label: "threadBridge website launched" },
   { year: "2025", label: "347+ projects milestone" },
   { year: "2026", label: "Global Change Award winner" },
 ];
