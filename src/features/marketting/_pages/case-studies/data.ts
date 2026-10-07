@@ -2,7 +2,7 @@
 
 export type ArticleBlock =
   | { type: "text"; heading?: string; body: string[] }
-  | { type: "image"; src: string; caption: string }
+  | { type: "image"; src: string; caption: string; width?: number; height?: number }
   | { type: "features"; heading: string; items: { title: string; body: string }[] }
   | { type: "quote"; text: string; cite: string };
 
@@ -103,13 +103,17 @@ export const caseStudyArticles: CaseStudyArticle[] = [
       },
       {
         type: "image",
-        src: "/images/case-studies/steeltech/products.jpg",
+        src: "/images/case-studies/steeltech/products.png",
+        width: 3418,
+        height: 1954,
         caption:
           "Product categories: a clean, white-studio catalogue that lets polished steel do the talking.",
       },
       {
         type: "image",
-        src: "/images/case-studies/steeltech/numbers.jpg",
+        src: "/images/case-studies/steeltech/numbers.png",
+        width: 3420,
+        height: 2214,
         caption: "Key company statistics, mapped across all 64 districts.",
       },
       {
@@ -122,13 +126,17 @@ export const caseStudyArticles: CaseStudyArticle[] = [
       },
       {
         type: "image",
-        src: "/images/case-studies/steeltech/process.jpg",
+        src: "/images/case-studies/steeltech/process.png",
+        width: 3420,
+        height: 2214,
         caption:
           "The process overview walks buyers from coil slitting to delivery.",
       },
       {
         type: "image",
-        src: "/images/case-studies/steeltech/clients.jpg",
+        src: "/images/case-studies/steeltech/clients.png",
+        width: 3420,
+        height: 1428,
         caption:
           "Organisations that trust Steeltech, shown alongside its certifications.",
       },
@@ -330,13 +338,17 @@ export const caseStudyArticles: CaseStudyArticle[] = [
       },
       {
         type: "image",
-        src: "/images/case-studies/discover-thailand/planner.jpg",
+        src: "/images/case-studies/discover-thailand/planner.png",
+        width: 3420,
+        height: 1854,
         caption:
           "“Thailand, made personal.” — a few inputs become a complete trip brief.",
       },
       {
         type: "image",
-        src: "/images/case-studies/discover-thailand/steps.jpg",
+        src: "/images/case-studies/discover-thailand/steps.png",
+        width: 3418,
+        height: 818,
         caption:
           "From idea to confirmed trip in four steps, with Google reviews right below.",
       },

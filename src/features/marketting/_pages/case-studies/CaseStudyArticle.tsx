@@ -82,6 +82,8 @@ function Block({ block, article }: { block: ArticleBlock; article: Article }) {
           <Screenshot
             src={block.src}
             alt={block.caption}
+            width={block.width}
+            height={block.height}
             host={hostOf(article.link)}
           />
           <figcaption className="mt-3 text-center text-sm text-white/45">
