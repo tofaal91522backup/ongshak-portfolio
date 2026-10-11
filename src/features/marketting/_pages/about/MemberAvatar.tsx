@@ -13,16 +13,22 @@ export default function MemberAvatar({
   src,
   name,
   initials,
+  sizes = "64px",
+  textClassName = "text-sm",
+  priority = false,
 }: {
   src: string | null;
   name: string;
   initials: string;
+  sizes?: string;
+  textClassName?: string;
+  priority?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
 
   if (!src || failed) {
     return (
-      <span className="flex h-full w-full items-center justify-center text-sm font-semibold text-white/70">
+      <span className={`flex h-full w-full items-center justify-center font-semibold text-white/70 ${textClassName}`}>
         {initials}
       </span>
     );
@@ -33,7 +39,8 @@ export default function MemberAvatar({
       src={src}
       alt={name}
       fill
-      sizes="64px"
+      sizes={sizes}
+      priority={priority}
       className="object-cover"
       onError={() => setFailed(true)}
     />
