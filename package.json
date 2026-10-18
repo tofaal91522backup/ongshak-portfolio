@@ -5,10 +5,10 @@
   "author": "md-tofaal-ahmed",
   "github": "www.github.com/md-tofaal-ahmed",
   "scripts": {
-    "dev": "dotenv -e .env next dev --turbopack",
+    "dev": " next dev --turbopack",
     "build": "next build --turbopack",
-    "ba": "next build --turbopack  && dotenv -e .env -- next start ",
-    "start": "dotenv -e .env -- next start",
+    "ba": "next build --turbopack  && next start ",
+    "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "tsc --noEmit --watch"
