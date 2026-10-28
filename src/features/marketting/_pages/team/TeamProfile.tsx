@@ -101,14 +101,17 @@ export default function TeamProfile({ employee: e }: { employee: Employee }) {
                 ))}
               </Tile>
             )}
-            {e.email && (
+            {e.emails.length > 0 && (
               <Tile Icon={Mail} label="Email">
-                <a
-                  href={`mailto:${e.email}`}
-                  className="transition-colors hover:text-[#FFA605]"
-                >
-                  {e.email}
-                </a>
+                {e.emails.map((a) => (
+                  <a
+                    key={a}
+                    href={`mailto:${a}`}
+                    className="block break-all transition-colors hover:text-[#FFA605]"
+                  >
+                    {a}
+                  </a>
+                ))}
               </Tile>
             )}
             {e.bloodGroup && (

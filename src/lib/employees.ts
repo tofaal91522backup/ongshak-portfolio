@@ -14,7 +14,7 @@ export type Employee = {
   projects: string[];
   // Personal details — only the single-profile page should ever render these.
   phones: string[];
-  email: string | null;
+  emails: string[];
   bloodGroup: string | null;
   district: string | null;
 };
@@ -28,6 +28,7 @@ type ApiEmployee = {
   phone?: string;
   phoneNumbers?: string[];
   email?: string;
+  emails?: string[];
   bloodGroup?: string;
   district?: string;
   projectNames?: string[];
@@ -43,6 +44,11 @@ function toEmployee(e: ApiEmployee): Employee | null {
     .map((p) => p?.trim())
     .filter((p): p is string => Boolean(p));
 
+  // `email` is the first address, kept by the API for older clients.
+  const emails = [e.email, ...(e.emails ?? [])]
+    .map((a) => a?.trim())
+    .filter((a): a is string => Boolean(a));
+
   return {
     employeeCode,
     name,
@@ -52,7 +58,7 @@ function toEmployee(e: ApiEmployee): Employee | null {
     photo: e.profilePicture?.url ?? null,
     projects: Array.isArray(e.projectNames) ? e.projectNames : [],
     phones: [...new Set(phones)],
-    email: e.email?.trim() || null,
+    emails: [...new Set(emails)],
     bloodGroup: e.bloodGroup?.trim() || null,
     district: e.district?.trim() || null,
   };
